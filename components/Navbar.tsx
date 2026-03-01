@@ -1,71 +1,131 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+
+function AnimatedLink({
+  href,
+  children,
+  onClick,
+}: {
+  href: string
+  children: string
+  onClick?: () => void
+}) {
+  return (
+    <a href={href} onClick={onClick} className="nav-anim-link">
+      <span className="nav-anim-link__base">{children}</span>
+      <span className="nav-anim-link__fill" aria-hidden>
+        {children}
+      </span>
+    </a>
+  )
+}
+
+const mobileLinks = [
+  { href: '#services', label: 'Serviços' },
+  { href: '#about', label: 'Sobre Nós' },
+  { href: '#portfolio', label: 'Portfólio' },
+  { href: '#contact', label: 'Contato' },
+]
 
 export default function Navbar() {
-  const [darkMode, setDarkMode] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const [sidebarOpen, setSidebarOpen] = useState(false)
 
-  function toggleTheme() {
-    document.body.classList.toggle('dark-theme')
-    setDarkMode((prev) => !prev)
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
+    if (typeof document === 'undefined') return
+    document.body.style.overflow = sidebarOpen ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [sidebarOpen])
+
+  function closeSidebar() {
+    setSidebarOpen(false)
   }
 
   return (
-    <nav
-      className="navbar navbar-expand-lg bg-white shadow-sm sticky-top"
-      aria-label="Navegação principal"
-    >
-      <div className="container px-4">
-        <a
-          className="navbar-brand logo d-flex align-items-center"
-          href="/"
-          aria-label="Página inicial"
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/Logo.png" alt="Logo da Intech Jr." className="img_logo" />
-          <span className="intech-dark-label ms-2 fw-bold" style={{ fontSize: '1.2rem' }}>
-            Intech Jr
-          </span>
-        </a>
+    <>
+      <nav
+        className={`navbar${scrolled ? ' scrolled' : ''}`}
+        aria-label="Navegação principal"
+      >
+        <div className="container">
+          <div className="navbar__inner">
+            {/* Brand */}
+            <a href="/" className="navbar__brand" aria-label="Página inicial">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/Logo.png" alt="Logo Intech Jr." className="navbar__logo" />
+              <span className="navbar__name">Intech Jr.</span>
+            </a>
 
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navMenu"
-          aria-label="Abrir menu de navegação"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+            {/* Desktop nav links */}
+            <nav className="navbar__nav" aria-label="Links principais">
+              <AnimatedLink href="#services">Serviços</AnimatedLink>
+              <AnimatedLink href="#about">Sobre</AnimatedLink>
+              <AnimatedLink href="#portfolio">Portfólio</AnimatedLink>
+              <AnimatedLink href="#contact">Contato</AnimatedLink>
+            </nav>
 
-        <div className="collapse navbar-collapse" id="navMenu">
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-3">
-            <li className="nav-item">
-              <a className="nav-link fw-semibold" href="#services">
-                Serviços
+            {/* Actions */}
+            <div className="navbar__actions">
+              <a href="#contact" className="btn btn-primary btn-sm navbar__cta-desktop">
+                Fale Conosco
               </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link fw-semibold" href="#portfolio">
-                Portfólio
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link fw-semibold" href="#contact">
-                Contato
-              </a>
-            </li>
-          </ul>
-          <button
-            className="btn btn-outline-secondary ms-3"
-            type="button"
-            aria-label="Trocar tema"
-            onClick={toggleTheme}
-          >
-            <i className={`bi ${darkMode ? 'bi-sun' : 'bi-moon'}`}></i>
-          </button>
+
+              <button
+                className={`navbar__hamburger${sidebarOpen ? ' open' : ''}`}
+                onClick={() => setSidebarOpen((prev) => !prev)}
+                aria-label={sidebarOpen ? 'Fechar menu' : 'Abrir menu'}
+                aria-expanded={sidebarOpen}
+              >
+                <span className="navbar__bar" />
+                <span className="navbar__bar navbar__bar--mid" />
+                <span className="navbar__bar" />
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+
+      {/* Sidebar scrim (overlay) */}
+      <div
+        className={`navbar__sidebar-scrim${sidebarOpen ? ' visible' : ''}`}
+        onClick={closeSidebar}
+        aria-hidden="true"
+      />
+
+      {/* Sidebar drawer */}
+      <aside
+        className={`navbar__sidebar${sidebarOpen ? ' open' : ''}`}
+        aria-label="Menu de navegação"
+        aria-hidden={!sidebarOpen}
+      >
+        <nav className="navbar__sidebar-nav">
+          {mobileLinks.map(({ href, label }) => (
+            <a
+              key={label}
+              href={href}
+              className="navbar__sidebar-link"
+              onClick={closeSidebar}
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
+
+        <div className="navbar__sidebar-footer">
+          <a href="#contact" className="btn btn-primary" onClick={closeSidebar}>
+            Fale Conosco
+          </a>
+        </div>
+      </aside>
+    </>
   )
 }

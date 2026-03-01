@@ -33,70 +33,97 @@ export default function ContactForm() {
   }
 
   return (
-    <>
+    <form onSubmit={handleSubmit} aria-label="Formulário de contato">
       {status === 'success' && (
-        <div className="alert alert-success alert-dismissible fade show" role="alert">
-          Mensagem enviada com sucesso!
+        <div className="form-alert form-alert--success" role="alert">
+          <i className="bi bi-check-circle-fill"></i>
+          <span>Mensagem enviada! Entraremos em contato em breve.</span>
           <button
             type="button"
-            className="btn-close"
+            className="form-alert__close"
             onClick={() => setStatus('idle')}
             aria-label="Fechar"
-          />
-        </div>
-      )}
-      {status === 'error' && (
-        <div className="alert alert-danger alert-dismissible fade show" role="alert">
-          {errorMsg}
-          <button
-            type="button"
-            className="btn-close"
-            onClick={() => setStatus('idle')}
-            aria-label="Fechar"
-          />
+          >
+            <i className="bi bi-x-lg"></i>
+          </button>
         </div>
       )}
 
-      <form
-        className="row justify-content-center"
-        onSubmit={handleSubmit}
-        aria-label="Formulário de contato"
-      >
-        <div className="col-md-6">
-          <input
-            type="text"
-            name="nome"
-            className="form-control mb-3"
-            placeholder="Seu nome"
-            required
-            aria-label="Seu nome"
-          />
-          <input
-            type="email"
-            name="email"
-            className="form-control mb-3"
-            placeholder="Seu e-mail"
-            required
-            aria-label="Seu e-mail"
-          />
-          <textarea
-            name="mensagem"
-            className="form-control mb-3"
-            rows={4}
-            placeholder="Sua mensagem"
-            required
-            aria-label="Sua mensagem"
-          />
+      {status === 'error' && (
+        <div className="form-alert form-alert--error" role="alert">
+          <i className="bi bi-exclamation-circle-fill"></i>
+          <span>{errorMsg}</span>
           <button
-            type="submit"
-            className="btn btn-primary w-100"
-            disabled={status === 'loading'}
-            aria-label="Enviar mensagem"
+            type="button"
+            className="form-alert__close"
+            onClick={() => setStatus('idle')}
+            aria-label="Fechar"
           >
-            {status === 'loading' ? 'Enviando...' : 'Enviar'}
+            <i className="bi bi-x-lg"></i>
           </button>
         </div>
-      </form>
-    </>
+      )}
+
+      <div className="form-group">
+        <label className="form-label" htmlFor="nome">
+          Nome completo
+        </label>
+        <input
+          id="nome"
+          type="text"
+          name="nome"
+          className="form-input"
+          placeholder="Ex: Maria Silva"
+          required
+          autoComplete="name"
+        />
+      </div>
+
+      <div className="form-group">
+        <label className="form-label" htmlFor="email">
+          E-mail
+        </label>
+        <input
+          id="email"
+          type="email"
+          name="email"
+          className="form-input"
+          placeholder="Ex: maria@empresa.com"
+          required
+          autoComplete="email"
+        />
+      </div>
+
+      <div className="form-group">
+        <label className="form-label" htmlFor="mensagem">
+          Mensagem
+        </label>
+        <textarea
+          id="mensagem"
+          name="mensagem"
+          className="form-input"
+          rows={5}
+          placeholder="Conte sobre seu projeto ou tire suas dúvidas..."
+          required
+          style={{ resize: 'vertical', minHeight: '120px' }}
+        />
+      </div>
+
+      <button
+        type="submit"
+        className="form-submit"
+        disabled={status === 'loading'}
+      >
+        {status === 'loading' ? (
+          <>
+            <i className="bi bi-hourglass-split"></i> Enviando...
+          </>
+        ) : (
+          <>
+            <i className="bi bi-send-fill"></i> Enviar mensagem
+          </>
+        )}
+      </button>
+    </form>
   )
 }
