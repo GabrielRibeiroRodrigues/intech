@@ -1,69 +1,39 @@
 'use client'
 
-import { useState } from 'react'
-
-type Status = 'idle' | 'loading' | 'success' | 'error'
+const WHATSAPP_NUMBER = '5535910010967'
 
 export default function ContactForm() {
-  const [status, setStatus] = useState<Status>('idle')
-  const [errorMsg, setErrorMsg] = useState('')
-
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    setStatus('loading')
 
     const form = e.currentTarget
-    const formData = new FormData(form)
+    const data = new FormData(form)
 
-    try {
-      const res = await fetch('/api/contact', { method: 'POST', body: formData })
-      const data = await res.json()
+    const nome = data.get('nome') as string
+    const email = data.get('email') as string
+    const mensagem = data.get('mensagem') as string
 
-      if (data.success) {
-        setStatus('success')
-        form.reset()
-      } else {
-        setStatus('error')
-        setErrorMsg(data.error || 'Erro ao enviar mensagem.')
-      }
-    } catch {
-      setStatus('error')
-      setErrorMsg('Erro de conexão. Tente novamente.')
-    }
+    const text = [
+      `Olá! Vim pelo site da Intech Jr.`,
+      ``,
+      `*Nome:* ${nome}`,
+      `*E-mail:* ${email}`,
+      ``,
+      `*Mensagem:*`,
+      mensagem,
+    ].join('\n')
+
+    window.open(
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`,
+      '_blank',
+      'noopener,noreferrer'
+    )
+
+    form.reset()
   }
 
   return (
     <form onSubmit={handleSubmit} aria-label="Formulário de contato">
-      {status === 'success' && (
-        <div className="form-alert form-alert--success" role="alert">
-          <i className="bi bi-check-circle-fill"></i>
-          <span>Mensagem enviada! Entraremos em contato em breve.</span>
-          <button
-            type="button"
-            className="form-alert__close"
-            onClick={() => setStatus('idle')}
-            aria-label="Fechar"
-          >
-            <i className="bi bi-x-lg"></i>
-          </button>
-        </div>
-      )}
-
-      {status === 'error' && (
-        <div className="form-alert form-alert--error" role="alert">
-          <i className="bi bi-exclamation-circle-fill"></i>
-          <span>{errorMsg}</span>
-          <button
-            type="button"
-            className="form-alert__close"
-            onClick={() => setStatus('idle')}
-            aria-label="Fechar"
-          >
-            <i className="bi bi-x-lg"></i>
-          </button>
-        </div>
-      )}
-
       <div className="form-group">
         <label className="form-label" htmlFor="nome">
           Nome completo
@@ -109,20 +79,8 @@ export default function ContactForm() {
         />
       </div>
 
-      <button
-        type="submit"
-        className="form-submit"
-        disabled={status === 'loading'}
-      >
-        {status === 'loading' ? (
-          <>
-            <i className="bi bi-hourglass-split"></i> Enviando...
-          </>
-        ) : (
-          <>
-            <i className="bi bi-send-fill"></i> Enviar mensagem
-          </>
-        )}
+      <button type="submit" className="form-submit">
+        <i className="bi bi-whatsapp"></i> Enviar pelo WhatsApp
       </button>
     </form>
   )
