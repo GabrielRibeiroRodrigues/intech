@@ -1,21 +1,52 @@
 import Navbar from '@/components/Navbar'
 import ContactForm from '@/components/ContactForm'
+import StatsCounter from '@/components/StatsCounter'
 
 const services = [
   {
     icon: 'bi-code-slash',
+    img: '/images/web.jpg',
     title: 'Desenvolvimento Web',
     text: 'Criamos aplicações web modernas, responsivas e de alta performance — do MVP ao produto completo.',
   },
   {
     icon: 'bi-palette2',
+    img: '/images/design.jpg',
     title: 'Design Gráfico',
     text: 'Identidade visual única e impactante, alinhada aos valores da sua marca e ao seu público.',
   },
   {
     icon: 'bi-graph-up-arrow',
+    img: '/images/mktdigital.png',
     title: 'Marketing Digital',
     text: 'Estratégias orientadas a dados para ampliar sua presença online e gerar resultados reais.',
+  },
+]
+
+const processSteps = [
+  {
+    num: '01',
+    icon: 'bi-chat-dots-fill',
+    title: 'Briefing',
+    text: 'Entendemos seus objetivos, público-alvo e expectativas para alinhar visão e estratégia.',
+  },
+  {
+    num: '02',
+    icon: 'bi-lightbulb-fill',
+    title: 'Estratégia',
+    text: 'Planejamos a solução ideal com base nos dados, benchmarks e nas necessidades do seu negócio.',
+  },
+  {
+    num: '03',
+    icon: 'bi-code-slash',
+    title: 'Execução',
+    text: 'Desenvolvemos com agilidade e qualidade, mantendo você informado a cada etapa do processo.',
+  },
+  {
+    num: '04',
+    icon: 'bi-rocket-takeoff-fill',
+    title: 'Entrega',
+    text: 'Lançamos o produto com suporte dedicado e acompanhamento pós-entrega.',
   },
 ]
 
@@ -41,6 +72,13 @@ const portfolio = [
     text: 'Logotipo do curso de Ciência da Computação',
     tag: 'Design',
   },
+  {
+    img: '/images/portifolio3.jpg',
+    alt: 'Projeto de Marketing',
+    title: 'Campanha Digital',
+    text: 'Estratégia e criação de conteúdo para redes sociais',
+    tag: 'Marketing',
+  },
 ]
 
 export default function Home() {
@@ -63,6 +101,10 @@ export default function Home() {
         </video>
         <div className="hero__overlay" aria-hidden="true" />
         <div className="hero__grid" aria-hidden="true" />
+
+        {/* Ambient glow orbs */}
+        <div className="hero__orb hero__orb--1" aria-hidden="true" />
+        <div className="hero__orb hero__orb--2" aria-hidden="true" />
 
         <div className="hero__content">
           <div className="hero__badge">
@@ -101,28 +143,7 @@ export default function Home() {
 
       <main>
         {/* ── Stats ── */}
-        <section className="stats" aria-label="Números da Intech Jr.">
-          <div className="container">
-            <div className="stats__grid">
-              <div className="stat reveal">
-                <div className="stat__number">15+</div>
-                <div className="stat__label">Projetos entregues</div>
-              </div>
-              <div className="stat reveal" style={{ '--i': 1 } as React.CSSProperties}>
-                <div className="stat__number">12+</div>
-                <div className="stat__label">Clientes atendidos</div>
-              </div>
-              <div className="stat reveal" style={{ '--i': 2 } as React.CSSProperties}>
-                <div className="stat__number">3+</div>
-                <div className="stat__label">Anos de operação</div>
-              </div>
-              <div className="stat reveal" style={{ '--i': 3 } as React.CSSProperties}>
-                <div className="stat__number">20+</div>
-                <div className="stat__label">Membros ativos</div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <StatsCounter />
 
         {/* ── Services ── */}
         <section id="services" className="section" aria-labelledby="services-title">
@@ -142,17 +163,25 @@ export default function Home() {
             </div>
 
             <div className="services__grid">
-              {services.map(({ icon, title, text }, index) => (
+              {services.map(({ icon, img, title, text }, index) => (
                 <div
                   className="service-card reveal"
                   key={title}
                   style={{ '--i': index } as React.CSSProperties}
                 >
+                  <div
+                    className="service-card__bg"
+                    style={{ backgroundImage: `url(${img})` }}
+                    aria-hidden="true"
+                  />
                   <div className="service-card__icon">
                     <i className={`bi ${icon}`}></i>
                   </div>
                   <h3 className="service-card__title">{title}</h3>
                   <p className="service-card__text">{text}</p>
+                  <span className="service-card__link">
+                    Saiba mais <i className="bi bi-arrow-right"></i>
+                  </span>
                 </div>
               ))}
             </div>
@@ -166,7 +195,7 @@ export default function Home() {
               {/* Visual */}
               <div className="about__image-wrap reveal">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/web.jpg" alt="Equipe Intech Jr." />
+                <img src="/images/design.jpg" alt="Equipe Intech Jr. trabalhando" />
               </div>
 
               {/* Content */}
@@ -180,7 +209,7 @@ export default function Home() {
                   <span className="gradient-text">resultados reais</span>
                 </h2>
                 <p className="about__text">
-                  A Intech Jr. é uma empresa de tecnologia com sede no IFSULDEMINAS Campus
+                  A Intech Jr. é uma empresa júnior de tecnologia com sede no IFSULDEMINAS Campus
                   Muzambinho, especializada em soluções digitais sob medida — do desenvolvimento
                   web à identidade visual e estratégias de marketing digital.
                 </p>
@@ -209,6 +238,43 @@ export default function Home() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Process ── */}
+        <section className="section process" aria-labelledby="process-title">
+          <div className="container">
+            <div className="section-header reveal">
+              <div className="section-chip">
+                <i className="bi bi-arrow-repeat"></i>
+                Como trabalhamos
+              </div>
+              <h2 id="process-title" className="section-title">
+                Do briefing à entrega,{' '}
+                <span className="gradient-text">sem complicação</span>
+              </h2>
+              <p className="section-subtitle">
+                Um processo claro e transparente para que você saiba exatamente o que esperar
+                em cada etapa do projeto.
+              </p>
+            </div>
+
+            <div className="process__grid">
+              {processSteps.map(({ num, icon, title, text }, index) => (
+                <div
+                  className="process-step reveal"
+                  key={num}
+                  style={{ '--i': index } as React.CSSProperties}
+                >
+                  <div className="process-step__num">{num}</div>
+                  <div className="process-step__icon">
+                    <i className={`bi ${icon}`}></i>
+                  </div>
+                  <h3 className="process-step__title">{title}</h3>
+                  <p className="process-step__text">{text}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -251,6 +317,8 @@ export default function Home() {
 
         {/* ── CTA Strip ── */}
         <section className="cta-section" aria-labelledby="cta-title">
+          <div className="cta-section__orb cta-section__orb--1" aria-hidden="true" />
+          <div className="cta-section__orb cta-section__orb--2" aria-hidden="true" />
           <div className="container cta-section__inner">
             <h2 id="cta-title" className="cta-section__title">
               Pronto para transformar sua ideia?
@@ -295,7 +363,7 @@ export default function Home() {
                     href="https://wa.me/35910010967"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="contact__link-item"
+                    className="contact__link-item contact__link-item--whatsapp"
                     aria-label="Contato via WhatsApp"
                   >
                     <i className="bi bi-whatsapp"></i>
@@ -305,7 +373,7 @@ export default function Home() {
                     href="https://www.instagram.com/intech.jr/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="contact__link-item"
+                    className="contact__link-item contact__link-item--instagram"
                     aria-label="Perfil no Instagram"
                   >
                     <i className="bi bi-instagram"></i>
@@ -315,7 +383,7 @@ export default function Home() {
                     href="https://www.facebook.com/aajracam?locale=pt_BR"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="contact__link-item"
+                    className="contact__link-item contact__link-item--facebook"
                     aria-label="Página no Facebook"
                   >
                     <i className="bi bi-facebook"></i>
