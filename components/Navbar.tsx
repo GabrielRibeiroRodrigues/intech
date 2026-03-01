@@ -5,14 +5,20 @@ import { useState, useEffect } from 'react'
 function AnimatedLink({
   href,
   children,
+  active,
   onClick,
 }: {
   href: string
   children: string
+  active?: boolean
   onClick?: () => void
 }) {
   return (
-    <a href={href} onClick={onClick} className="nav-anim-link">
+    <a
+      href={href}
+      onClick={onClick}
+      className={`nav-anim-link${active ? ' nav-anim-link--active' : ''}`}
+    >
       <span className="nav-anim-link__base">{children}</span>
       <span className="nav-anim-link__fill" aria-hidden>
         {children}
@@ -21,19 +27,39 @@ function AnimatedLink({
   )
 }
 
-const mobileLinks = [
-  { href: '#services', label: 'Serviços' },
-  { href: '#about', label: 'Sobre Nós' },
-  { href: '#portfolio', label: 'Portfólio' },
-  { href: '#contact', label: 'Contato' },
+const navLinks = [
+  { href: '#services', label: 'Serviços', id: 'services' },
+  { href: '#about', label: 'Sobre', id: 'about' },
+  { href: '#portfolio', label: 'Portfólio', id: 'portfolio' },
+  { href: '#contact', label: 'Contato', id: 'contact' },
 ]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [progress, setProgress] = useState(0)
+  const [activeSection, setActiveSection] = useState('')
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20)
+    const handleScroll = () => {
+      const scrollY = window.scrollY
+      setScrolled(scrollY > 20)
+
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight
+      setProgress(maxScroll > 0 ? (scrollY / maxScroll) * 100 : 0)
+
+      const sectionIds = ['contact', 'portfolio', 'about', 'services']
+      let found = ''
+      for (const id of sectionIds) {
+        const el = document.getElementById(id)
+        if (el && el.getBoundingClientRect().top <= 120) {
+          found = id
+          break
+        }
+      }
+      setActiveSection(found)
+    }
+
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -67,10 +93,15 @@ export default function Navbar() {
 
             {/* Desktop nav links */}
             <nav className="navbar__nav" aria-label="Links principais">
-              <AnimatedLink href="#services">Serviços</AnimatedLink>
-              <AnimatedLink href="#about">Sobre</AnimatedLink>
-              <AnimatedLink href="#portfolio">Portfólio</AnimatedLink>
-              <AnimatedLink href="#contact">Contato</AnimatedLink>
+              {navLinks.map(({ href, label, id }) => (
+                <AnimatedLink
+                  key={id}
+                  href={href}
+                  active={activeSection === id}
+                >
+                  {label}
+                </AnimatedLink>
+              ))}
             </nav>
 
             {/* Actions */}
@@ -92,9 +123,16 @@ export default function Navbar() {
             </div>
           </div>
         </div>
+
+        {/* Scroll progress bar */}
+        <div
+          className="navbar__progress"
+          style={{ width: `${progress}%` }}
+          aria-hidden="true"
+        />
       </nav>
 
-      {/* Sidebar scrim (overlay) */}
+      {/* Sidebar scrim */}
       <div
         className={`navbar__sidebar-scrim${sidebarOpen ? ' visible' : ''}`}
         onClick={closeSidebar}
@@ -108,7 +146,7 @@ export default function Navbar() {
         aria-hidden={!sidebarOpen}
       >
         <nav className="navbar__sidebar-nav">
-          {mobileLinks.map(({ href, label }) => (
+          {navLinks.map(({ href, label }) => (
             <a
               key={label}
               href={href}
