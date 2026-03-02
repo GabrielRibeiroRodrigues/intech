@@ -1,52 +1,33 @@
 import Navbar from '@/components/Navbar'
 import ContactForm from '@/components/ContactForm'
 import StatsCounter from '@/components/StatsCounter'
-
-const services = [
-  {
-    icon: 'bi-code-slash',
-    img: '/images/web.jpg',
-    title: 'Desenvolvimento Web',
-    text: 'Criamos aplicações web modernas, responsivas e de alta performance — do MVP ao produto completo.',
-  },
-  {
-    icon: 'bi-palette2',
-    img: '/images/design.jpg',
-    title: 'Design Gráfico',
-    text: 'Identidade visual única e impactante, alinhada aos valores da sua marca e ao seu público.',
-  },
-  {
-    icon: 'bi-graph-up-arrow',
-    img: '/images/mktdigital.png',
-    title: 'Marketing Digital',
-    text: 'Estratégias orientadas a dados para ampliar sua presença online e gerar resultados reais.',
-  },
-]
+import ServicesCarousel from '@/components/ServicesCarousel'
+import PortfolioCarousel from '@/components/PortfolioCarousel'
 
 const processSteps = [
   {
     num: '01',
     icon: 'bi-chat-dots-fill',
     title: 'Briefing',
-    text: 'Entendemos seus objetivos, público-alvo e expectativas para alinhar visão e estratégia.',
+    text: 'Entendemos seus objetivos, público-alvo e expectativas para alinhar visão e estratégia antes de qualquer linha de código.',
   },
   {
     num: '02',
     icon: 'bi-lightbulb-fill',
     title: 'Estratégia',
-    text: 'Planejamos a solução ideal com base nos dados, benchmarks e nas necessidades do seu negócio.',
+    text: 'Planejamos a solução ideal com base nos dados, benchmarks e nas necessidades específicas do seu negócio.',
   },
   {
     num: '03',
     icon: 'bi-code-slash',
     title: 'Execução',
-    text: 'Desenvolvemos com agilidade e qualidade, mantendo você informado a cada etapa do processo.',
+    text: 'Desenvolvemos com agilidade e qualidade, mantendo você informado a cada sprint com entregas parciais.',
   },
   {
     num: '04',
     icon: 'bi-rocket-takeoff-fill',
     title: 'Entrega',
-    text: 'Lançamos o produto com suporte dedicado e acompanhamento pós-entrega.',
+    text: 'Lançamos o produto com suporte dedicado e acompanhamento pós-entrega para garantir o sucesso.',
   },
 ]
 
@@ -81,6 +62,19 @@ const portfolio = [
   },
 ]
 
+const marqueeItems = [
+  'Desenvolvimento Web',
+  'Design Gráfico',
+  'Marketing Digital',
+  'Branding',
+  'UI / UX',
+  'React · Next.js',
+  'Identidade Visual',
+  'Estratégia Digital',
+  'Landing Pages',
+  'E-commerce',
+]
+
 export default function Home() {
   return (
     <>
@@ -102,14 +96,13 @@ export default function Home() {
         <div className="hero__overlay" aria-hidden="true" />
         <div className="hero__grid" aria-hidden="true" />
 
-        {/* Ambient glow orbs */}
         <div className="hero__orb hero__orb--1" aria-hidden="true" />
         <div className="hero__orb hero__orb--2" aria-hidden="true" />
 
         <div className="hero__content">
           <div className="hero__badge">
             <span className="hero__badge-dot" aria-hidden="true" />
-            Muzambinho · MG
+            Muzambinho · MG — Empresa Júnior
           </div>
 
           <h1 id="hero-title" className="hero__title">
@@ -119,27 +112,53 @@ export default function Home() {
           </h1>
 
           <p className="hero__subtitle">
-            Transformamos ideias em produtos digitais de alto impacto — com design, tecnologia
-            e estratégia alinhados ao crescimento do seu negócio.
+            Transformamos ideias em produtos digitais de alto impacto — com design,
+            tecnologia e estratégia alinhados ao crescimento do seu negócio.
           </p>
 
           <div className="hero__cta">
             <a href="#contact" className="btn btn-primary btn-lg">
-              <i className="bi bi-rocket-takeoff-fill"></i>
+              <i className="bi bi-rocket-takeoff-fill" />
               Iniciar projeto
             </a>
             <a href="#services" className="btn btn-ghost btn-lg">
               Nossos serviços
-              <i className="bi bi-arrow-right"></i>
+              <i className="bi bi-arrow-right" />
             </a>
+          </div>
+
+          <div className="hero__trust" aria-label="Parceiros e certificações">
+            <span className="hero__trust-label">Vinculada ao</span>
+            <span className="hero__trust-divider" aria-hidden="true" />
+            <span className="hero__trust-item">
+              <i className="bi bi-building" aria-hidden="true" />
+              IFSULDEMINAS
+            </span>
+            <span className="hero__trust-divider" aria-hidden="true" />
+            <span className="hero__trust-item">
+              <i className="bi bi-award" aria-hidden="true" />
+              Brasil Júnior
+            </span>
           </div>
         </div>
 
         <div className="hero__scroll" aria-hidden="true">
-          <i className="bi bi-chevron-compact-down" style={{ fontSize: '1.4rem' }}></i>
+          <i className="bi bi-chevron-compact-down" style={{ fontSize: '1.4rem' }} />
           <span>scroll</span>
         </div>
       </section>
+
+      {/* ── Marquee ticker ── */}
+      <div className="marquee-strip" aria-hidden="true">
+        <div className="marquee-track">
+          {[...marqueeItems, ...marqueeItems].map((item, i) => (
+            <span key={i} className="marquee-item">
+              <span className="marquee-dot" />
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
 
       <main>
         {/* ── Stats ── */}
@@ -150,40 +169,21 @@ export default function Home() {
           <div className="container">
             <div className="section-header reveal">
               <div className="section-chip">
-                <i className="bi bi-grid-3x3-gap-fill"></i>
+                <i className="bi bi-grid-3x3-gap-fill" />
                 O que fazemos
               </div>
               <h2 id="services-title" className="section-title">
-                Serviços pensados para o seu crescimento
+                Serviços pensados{' '}
+                <span className="gradient-text">para o seu crescimento</span>
               </h2>
               <p className="section-subtitle">
-                Unimos conhecimento técnico e criatividade para entregar soluções que realmente
-                fazem diferença.
+                Unimos conhecimento técnico e criatividade para entregar soluções
+                que realmente fazem diferença.
               </p>
             </div>
 
-            <div className="services__grid">
-              {services.map(({ icon, img, title, text }, index) => (
-                <div
-                  className="service-card reveal"
-                  key={title}
-                  style={{ '--i': index } as React.CSSProperties}
-                >
-                  <div
-                    className="service-card__bg"
-                    style={{ backgroundImage: `url(${img})` }}
-                    aria-hidden="true"
-                  />
-                  <div className="service-card__icon">
-                    <i className={`bi ${icon}`}></i>
-                  </div>
-                  <h3 className="service-card__title">{title}</h3>
-                  <p className="service-card__text">{text}</p>
-                  <span className="service-card__link">
-                    Saiba mais <i className="bi bi-arrow-right"></i>
-                  </span>
-                </div>
-              ))}
+            <div className="reveal" style={{ '--i': 1 } as React.CSSProperties}>
+              <ServicesCarousel />
             </div>
           </div>
         </section>
@@ -196,12 +196,20 @@ export default function Home() {
               <div className="about__image-wrap reveal">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/images/design.jpg" alt="Equipe Intech Jr. trabalhando" />
+                <div className="about__image-badge" aria-hidden="true">
+                  <span className="about__image-badge-num">2017</span>
+                  <span className="about__image-badge-label">Fundação</span>
+                </div>
+                <div className="about__image-badge about__image-badge--bottom" aria-hidden="true">
+                  <i className="bi bi-award-fill" />
+                  <span>Certificada Brasil Júnior</span>
+                </div>
               </div>
 
               {/* Content */}
               <div className="reveal" style={{ '--i': 1 } as React.CSSProperties}>
                 <div className="section-chip">
-                  <i className="bi bi-info-circle-fill"></i>
+                  <i className="bi bi-info-circle-fill" />
                   Sobre nós
                 </div>
                 <h2 id="about-title" className="section-title">
@@ -209,33 +217,28 @@ export default function Home() {
                   <span className="gradient-text">resultados reais</span>
                 </h2>
                 <p className="about__text">
-                  A Intech Jr. é uma empresa júnior de tecnologia com sede no IFSULDEMINAS Campus
-                  Muzambinho, especializada em soluções digitais sob medida — do desenvolvimento
-                  web à identidade visual e estratégias de marketing digital.
+                  A Intech Jr. é uma empresa júnior de tecnologia com sede no IFSULDEMINAS
+                  Campus Muzambinho, especializada em soluções digitais sob medida — do
+                  desenvolvimento web à identidade visual e estratégias de marketing digital.
                 </p>
                 <p className="about__text">
-                  Nossos projetos seguem metodologias ágeis e processos estruturados, garantindo
-                  qualidade técnica, prazos cumpridos e resultados que geram valor real para o
-                  negócio do cliente.
+                  Nossos projetos seguem metodologias ágeis e processos estruturados,
+                  garantindo qualidade técnica, prazos cumpridos e resultados que geram
+                  valor real para o negócio do cliente.
                 </p>
 
                 <div className="about__highlights">
-                  <div className="about__highlight-item">
-                    <i className="bi bi-check-circle-fill"></i>
-                    Equipe multidisciplinar e especializada
-                  </div>
-                  <div className="about__highlight-item">
-                    <i className="bi bi-check-circle-fill"></i>
-                    Processos ágeis e metodologia comprovada
-                  </div>
-                  <div className="about__highlight-item">
-                    <i className="bi bi-check-circle-fill"></i>
-                    Foco em resultado e satisfação do cliente
-                  </div>
-                  <div className="about__highlight-item">
-                    <i className="bi bi-check-circle-fill"></i>
-                    Preços acessíveis sem abrir mão da qualidade
-                  </div>
+                  {[
+                    { icon: 'bi-people-fill', text: 'Equipe multidisciplinar e especializada' },
+                    { icon: 'bi-lightning-charge-fill', text: 'Processos ágeis e metodologia comprovada' },
+                    { icon: 'bi-bullseye', text: 'Foco em resultado e satisfação do cliente' },
+                    { icon: 'bi-tag-fill', text: 'Preços acessíveis sem abrir mão da qualidade' },
+                  ].map(({ icon, text }) => (
+                    <div key={text} className="about__highlight-item">
+                      <i className={`bi ${icon}`} aria-hidden="true" />
+                      {text}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -247,7 +250,7 @@ export default function Home() {
           <div className="container">
             <div className="section-header reveal">
               <div className="section-chip">
-                <i className="bi bi-arrow-repeat"></i>
+                <i className="bi bi-arrow-repeat" />
                 Como trabalhamos
               </div>
               <h2 id="process-title" className="section-title">
@@ -255,21 +258,24 @@ export default function Home() {
                 <span className="gradient-text">sem complicação</span>
               </h2>
               <p className="section-subtitle">
-                Um processo claro e transparente para que você saiba exatamente o que esperar
-                em cada etapa do projeto.
+                Um processo claro e transparente para que você saiba exatamente
+                o que esperar em cada etapa.
               </p>
             </div>
 
-            <div className="process__grid">
+            <div className="process__timeline">
               {processSteps.map(({ num, icon, title, text }, index) => (
                 <div
                   className="process-step reveal"
                   key={num}
                   style={{ '--i': index } as React.CSSProperties}
                 >
-                  <div className="process-step__num">{num}</div>
-                  <div className="process-step__icon">
-                    <i className={`bi ${icon}`}></i>
+                  <div className="process-step__connector" aria-hidden="true" />
+                  <div className="process-step__head">
+                    <div className="process-step__icon">
+                      <i className={`bi ${icon}`} aria-hidden="true" />
+                    </div>
+                    <div className="process-step__num" aria-hidden="true">{num}</div>
                   </div>
                   <h3 className="process-step__title">{title}</h3>
                   <p className="process-step__text">{text}</p>
@@ -280,37 +286,25 @@ export default function Home() {
         </section>
 
         {/* ── Portfolio ── */}
-        <section id="portfolio" className="section" aria-labelledby="portfolio-title">
+        <section id="portfolio" className="section portfolio-section" aria-labelledby="portfolio-title">
           <div className="container">
             <div className="section-header reveal">
               <div className="section-chip">
-                <i className="bi bi-collection-fill"></i>
+                <i className="bi bi-collection-fill" />
                 Portfólio
               </div>
               <h2 id="portfolio-title" className="section-title">
-                Projetos que falam por si
+                Projetos que{' '}
+                <span className="gradient-text">falam por si</span>
               </h2>
               <p className="section-subtitle">
-                Cada projeto é uma história de parceria, criatividade e tecnologia aplicada.
+                Cada projeto é uma história de parceria, criatividade e
+                tecnologia aplicada.
               </p>
             </div>
 
-            <div className="portfolio__grid">
-              {portfolio.map(({ img, alt, title, text, tag }, index) => (
-                <div
-                  className="portfolio-card reveal"
-                  key={title}
-                  style={{ '--i': index } as React.CSSProperties}
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={img} alt={alt} className="portfolio-card__img" />
-                  <div className="portfolio-card__overlay">
-                    <p className="portfolio-card__tag">{tag}</p>
-                    <h3 className="portfolio-card__title">{title}</h3>
-                    <p className="portfolio-card__text">{text}</p>
-                  </div>
-                </div>
-              ))}
+            <div className="reveal" style={{ '--i': 1 } as React.CSSProperties}>
+              <PortfolioCarousel items={portfolio} />
             </div>
           </div>
         </section>
@@ -320,15 +314,19 @@ export default function Home() {
           <div className="cta-section__orb cta-section__orb--1" aria-hidden="true" />
           <div className="cta-section__orb cta-section__orb--2" aria-hidden="true" />
           <div className="container cta-section__inner">
+            <div className="section-chip" style={{ margin: '0 auto 20px' }}>
+              <i className="bi bi-chat-heart-fill" />
+              Vamos conversar
+            </div>
             <h2 id="cta-title" className="cta-section__title">
               Pronto para transformar sua ideia?
             </h2>
             <p className="cta-section__subtitle">
-              Vamos conversar sobre o seu projeto. Nossa equipe está pronta para criar a solução
-              ideal — com agilidade, qualidade e preço justo.
+              Nossa equipe está pronta para criar a solução ideal — com agilidade,
+              qualidade e preço justo. Sem burocracia.
             </p>
-            <a href="#contact" className="btn btn-ghost btn-lg">
-              <i className="bi bi-chat-dots-fill"></i>
+            <a href="#contact" className="btn btn-primary btn-lg">
+              <i className="bi bi-chat-dots-fill" />
               Fale com a gente agora
             </a>
           </div>
@@ -339,14 +337,16 @@ export default function Home() {
           <div className="container">
             <div className="section-header reveal">
               <div className="section-chip">
-                <i className="bi bi-envelope-fill"></i>
+                <i className="bi bi-envelope-fill" />
                 Contato
               </div>
               <h2 id="contact-title" className="section-title">
-                Entre em contato
+                Entre em{' '}
+                <span className="gradient-text">contato</span>
               </h2>
               <p className="section-subtitle">
                 Preencha o formulário ou escolha um de nossos canais de atendimento.
+                Respondemos em até 24 horas.
               </p>
             </div>
 
@@ -355,8 +355,8 @@ export default function Home() {
               <div className="reveal">
                 <h3 className="contact__info-title">Canais de atendimento</h3>
                 <p className="contact__info-text">
-                  Estamos prontos para atender você. Escolha a forma mais conveniente de entrar em
-                  contato com nossa equipe.
+                  Estamos prontos para atender você. Escolha a forma mais conveniente
+                  de entrar em contato com nossa equipe.
                 </p>
                 <div className="contact__links">
                   <a
@@ -366,8 +366,9 @@ export default function Home() {
                     className="contact__link-item contact__link-item--whatsapp"
                     aria-label="Contato via WhatsApp"
                   >
-                    <i className="bi bi-whatsapp"></i>
+                    <i className="bi bi-whatsapp" aria-hidden="true" />
                     WhatsApp
+                    <i className="bi bi-arrow-right contact__link-arrow" aria-hidden="true" />
                   </a>
                   <a
                     href="https://www.instagram.com/intech.jr/"
@@ -376,8 +377,9 @@ export default function Home() {
                     className="contact__link-item contact__link-item--instagram"
                     aria-label="Perfil no Instagram"
                   >
-                    <i className="bi bi-instagram"></i>
+                    <i className="bi bi-instagram" aria-hidden="true" />
                     Instagram
+                    <i className="bi bi-arrow-right contact__link-arrow" aria-hidden="true" />
                   </a>
                   <a
                     href="https://www.facebook.com/aajracam?locale=pt_BR"
@@ -386,9 +388,17 @@ export default function Home() {
                     className="contact__link-item contact__link-item--facebook"
                     aria-label="Página no Facebook"
                   >
-                    <i className="bi bi-facebook"></i>
+                    <i className="bi bi-facebook" aria-hidden="true" />
                     Facebook
+                    <i className="bi bi-arrow-right contact__link-arrow" aria-hidden="true" />
                   </a>
+                  <div className="contact__location">
+                    <i className="bi bi-geo-alt-fill" aria-hidden="true" />
+                    <div>
+                      <strong>IFSULDEMINAS – Campus Muzambinho</strong>
+                      <span>Muzambinho, MG</span>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -404,9 +414,8 @@ export default function Home() {
       {/* ── Footer ── */}
       <footer className="footer" role="contentinfo">
         <div className="container">
-          <div className="footer__grid">
-            {/* Brand col */}
-            <div>
+          <div className="footer__top">
+            <div className="footer__brand-col">
               <div className="footer__brand">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/images/Logo.png" alt="Logo Intech Jr." className="footer__logo" />
@@ -422,32 +431,31 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="footer__social-link"
-                  aria-label="Instagram"
+                  aria-label="Instagram da Intech Jr."
                 >
-                  <i className="bi bi-instagram"></i>
+                  <i className="bi bi-instagram" aria-hidden="true" />
                 </a>
                 <a
                   href="https://www.facebook.com/aajracam?locale=pt_BR"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="footer__social-link"
-                  aria-label="Facebook"
+                  aria-label="Facebook da Intech Jr."
                 >
-                  <i className="bi bi-facebook"></i>
+                  <i className="bi bi-facebook" aria-hidden="true" />
                 </a>
                 <a
                   href="https://wa.me/35910010967"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="footer__social-link"
-                  aria-label="WhatsApp"
+                  aria-label="WhatsApp da Intech Jr."
                 >
-                  <i className="bi bi-whatsapp"></i>
+                  <i className="bi bi-whatsapp" aria-hidden="true" />
                 </a>
               </div>
             </div>
 
-            {/* Nav col */}
             <div>
               <h4 className="footer__heading">Navegação</h4>
               <nav className="footer__links" aria-label="Links do rodapé">
@@ -458,7 +466,6 @@ export default function Home() {
               </nav>
             </div>
 
-            {/* Services col */}
             <div>
               <h4 className="footer__heading">Serviços</h4>
               <nav className="footer__links" aria-label="Serviços oferecidos">
@@ -467,11 +474,28 @@ export default function Home() {
                 <a href="#services" className="footer__link">Marketing Digital</a>
               </nav>
             </div>
+
+            <div>
+              <h4 className="footer__heading">Contato</h4>
+              <div className="footer__contact-info">
+                <a href="mailto:intechjr@gmail.com" className="footer__link">
+                  intechjr@gmail.com
+                </a>
+                <a href="https://wa.me/35910010967" className="footer__link" target="_blank" rel="noopener noreferrer">
+                  (35) 91001-0967
+                </a>
+                <span className="footer__link footer__link--location">
+                  Muzambinho – MG
+                </span>
+              </div>
+            </div>
           </div>
 
           <div className="footer__bottom">
             <span>© 2026 Intech Jr. Todos os direitos reservados.</span>
-            <span>Muzambinho — MG</span>
+            <span className="footer__bottom-right">
+              Vinculada ao IFSULDEMINAS · Campus Muzambinho
+            </span>
           </div>
         </div>
       </footer>
@@ -484,7 +508,7 @@ export default function Home() {
         className="whatsapp-float"
         aria-label="Fale conosco pelo WhatsApp"
       >
-        <i className="bi bi-whatsapp"></i>
+        <i className="bi bi-whatsapp" aria-hidden="true" />
       </a>
     </>
   )
