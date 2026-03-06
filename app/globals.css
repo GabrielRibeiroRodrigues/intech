@@ -1538,7 +1538,60 @@ button {
 }
 
 /* =============================================
-   16. CTA Section
+   16. Team Section
+   ============================================= */
+.team-section {
+  background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+.team-section::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.team-photo-wrap {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: var(--radius-lg);
+  overflow: visible;
+}
+
+.team-photo {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg), 0 0 0 1px var(--border-card);
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-slow);
+}
+
+.team-photo-wrap:hover .team-photo {
+  transform: scale(1.015);
+}
+
+.team-photo__glow {
+  position: absolute;
+  inset: -1px;
+  border-radius: var(--radius-lg);
+  background: var(--gradient);
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(24px);
+}
+
+/* =============================================
+   17. CTA Section
    ============================================= */
 .cta-section {
   background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #1e3a8a 100%);

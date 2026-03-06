@@ -309,6 +309,36 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ── Team ── */}
+        <section id="team" className="section team-section" aria-labelledby="team-title">
+          <div className="container">
+            <div className="section-header reveal">
+              <div className="section-chip">
+                <i className="bi bi-people-fill" />
+                Nossa Equipe
+              </div>
+              <h2 id="team-title" className="section-title">
+                Pessoas que fazem a{' '}
+                <span className="gradient-text">magia acontecer</span>
+              </h2>
+              <p className="section-subtitle">
+                Nossa equipe multidisciplinar une talento, criatividade e técnica
+                para entregar soluções digitais de excelência.
+              </p>
+            </div>
+
+            <div className="team-photo-wrap reveal" style={{ '--i': 1 } as React.CSSProperties}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/equipe.png"
+                alt="Equipe Intech Jr."
+                className="team-photo"
+              />
+              <div className="team-photo__glow" aria-hidden="true" />
+            </div>
+          </div>
+        </section>
+
         {/* ── CTA Strip ── */}
         <section className="cta-section" aria-labelledby="cta-title">
           <div className="cta-section__orb cta-section__orb--1" aria-hidden="true" />

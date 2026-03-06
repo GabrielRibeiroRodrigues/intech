@@ -31,6 +31,7 @@ const navLinks = [
   { href: '#services', label: 'Serviços', id: 'services' },
   { href: '#about', label: 'Sobre', id: 'about' },
   { href: '#portfolio', label: 'Portfólio', id: 'portfolio' },
+  { href: '#team', label: 'Equipe', id: 'team' },
   { href: '#contact', label: 'Contato', id: 'contact' },
 ]
 
@@ -48,7 +49,7 @@ export default function Navbar() {
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight
       setProgress(maxScroll > 0 ? (scrollY / maxScroll) * 100 : 0)
 
-      const sectionIds = ['contact', 'portfolio', 'about', 'services']
+      const sectionIds = ['contact', 'team', 'portfolio', 'about', 'services']
       let found = ''
       for (const id of sectionIds) {
         const el = document.getElementById(id)
