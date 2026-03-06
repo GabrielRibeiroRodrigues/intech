@@ -9,7 +9,7 @@ Este projeto foi preparado para rodar em produção com:
 
 - Docker Engine instalado
 - Docker Compose (plugin `docker compose`) instalado
-- Porta `80` liberada no firewall
+- Porta de entrada liberada no firewall (`8080` por padrao, ou `80` se configurar)
 
 ## 2) Subir o projeto
 
@@ -17,6 +17,13 @@ No servidor, dentro da pasta do projeto:
 
 ```bash
 docker compose up -d --build
+```
+
+Por padrao, o Nginx publica na porta `8080` do host para evitar conflito com servicos ja rodando na `80`.
+Se quiser usar `80`, execute:
+
+```bash
+NGINX_PORT=80 docker compose up -d --build
 ```
 
 Verificar status:
@@ -63,4 +70,4 @@ Para usar HTTPS em produção, você pode:
 ## Observações
 
 - O Next.js foi configurado com `output: 'standalone'` em `next.config.ts` para imagem menor e startup mais simples.
-- A app roda internamente na porta `3000` e o Nginx publica na porta `80`.
+- A app roda internamente na porta `3000` e o Nginx publica na porta `8080` por padrao.
