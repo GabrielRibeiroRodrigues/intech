@@ -245,6 +245,40 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ── History (ACAM → InTech) ── */}
+        <section id="history" className="section history" aria-labelledby="history-title">
+          <div className="container">
+            <div className="history__grid">
+              {/* Content */}
+              <div className="reveal">
+                <div className="section-chip">
+                  <i className="bi bi-clock-history" />
+                  Nossa História
+                </div>
+                <h2 id="history-title" className="section-title">
+                  De ACAM Jr. a{' '}
+                  <span className="gradient-text">InTech Jr.</span>
+                </h2>
+                <p className="history__text">
+                  A InTech Jr. é a continuidade da ACAM Jr., agora com uma nova
+                  identidade e posicionamento, mantendo o mesmo propósito:
+                  desenvolver soluções tecnológicas e formar profissionais
+                  preparados para o mercado.
+                </p>
+              </div>
+
+              {/* Image */}
+              <div className="history__image-wrap reveal" style={{ '--i': 1 } as React.CSSProperties}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/acamin.jpeg"
+                  alt="Equipe ACAM Jr. — origem da InTech Jr."
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ── Process ── */}
         <section className="section process" aria-labelledby="process-title">
           <div className="container">
