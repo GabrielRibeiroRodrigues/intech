@@ -2743,3 +2743,107 @@ button {
   }
 }
 
+/* =============================================
+   26. OLIP Page — Sobre + Edição Atual
+   ============================================= */
+
+/* Section background — mirrors the home's about (bg-secondary) */
+.olip-about {
+  background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+.olip-about::before {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(46, 204, 113, 0.05) 0%, transparent 70%);
+  top: 50%;
+  right: -100px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* Override aspect-ratio: the OLIP poster is portrait */
+.olip-about__poster {
+  aspect-ratio: 3 / 4 !important;
+  object-position: top center;
+}
+
+/* Green chip override */
+.olip-section-chip {
+  background: rgba(46, 204, 113, 0.08) !important;
+  color: #6ee7a4 !important;
+  border-color: rgba(46, 204, 113, 0.2) !important;
+}
+
+/* 2×2 info grid */
+.olip-info__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.olip-info__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.02);
+  transition: all var(--transition);
+}
+
+.olip-info__item:hover {
+  border-color: rgba(46, 204, 113, 0.22);
+  background: rgba(46, 204, 113, 0.04);
+  transform: translateY(-2px);
+}
+
+.olip-info__item-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: rgba(46, 204, 113, 0.1);
+  color: #2ecc71;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid rgba(46, 204, 113, 0.2);
+}
+
+.olip-info__item-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #2ecc71;
+  margin-bottom: 3px;
+}
+
+.olip-info__item-value {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .olip-info__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .olip-about__poster {
+    aspect-ratio: 4 / 3 !important;
+    object-position: center center;
+  }
+}
+

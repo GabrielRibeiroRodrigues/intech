@@ -85,7 +85,65 @@ export default function OlipPage() {
       </section>
 
       <main>
-        {/* Remaining sections will be added here */}
+        {/* ── Sobre o Evento + Edição Atual ── */}
+        <section id="sobre" className="section olip-about" aria-labelledby="olip-about-title">
+          <div className="container">
+            <div className="about__grid">
+
+              {/* Poster image */}
+              <div className="about__image-wrap reveal">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/olip-poster.jpg"
+                  alt="Arte oficial da 15ª OLIP"
+                  className="olip-about__poster"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="reveal" style={{ '--i': 1 } as React.CSSProperties}>
+                <div className="section-chip olip-section-chip">
+                  <i className="bi bi-trophy-fill" />
+                  Sobre o Evento
+                </div>
+                <h2 id="olip-about-title" className="section-title">
+                  O maior evento de programação{' '}
+                  <span className="olip-green-text">do IFSULDEMINAS</span>
+                </h2>
+                <p className="about__text">
+                  A OLIP fomenta o raciocínio lógico e a resolução de problemas, preparando
+                  os alunos para competições nacionais como a Maratona de Programação da SBC.
+                  Aberta a todos os alunos regulares dos institutos federais.
+                </p>
+                <p className="about__text">
+                  A competição envolve a resolução de problemas algorítmicos em tempo
+                  limitado com linguagens como C, C++, Java ou Python, submetidos em
+                  plataforma de juiz online.
+                </p>
+
+                <div className="olip-info__grid">
+                  {[
+                    { icon: 'bi-calendar-event-fill', label: 'Data',    value: '20 de junho de 2026' },
+                    { icon: 'bi-geo-alt-fill',         label: 'Local',   value: 'Laboratórios de Informática · IFSULDEMINAS Muzambinho' },
+                    { icon: 'bi-people-fill',           label: 'Equipes', value: 'Até 3 integrantes por equipe. Consulta a material impresso permitida.' },
+                    { icon: 'bi-trophy-fill',           label: 'Formato', value: 'Maratona SBC — balões por questão correta.' },
+                  ].map(({ icon, label, value }) => (
+                    <div key={label} className="olip-info__item">
+                      <div className="olip-info__item-icon" aria-hidden="true">
+                        <i className={`bi ${icon}`} />
+                      </div>
+                      <div>
+                        <p className="olip-info__item-label">{label}</p>
+                        <p className="olip-info__item-value">{value}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
       </main>
     </>
   )
