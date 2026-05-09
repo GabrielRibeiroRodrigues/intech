@@ -145,6 +145,95 @@ export default function OlipPage() {
           </div>
         </section>
       </main>
+
+      {/* ── Footer ── */}
+      <footer className="footer" role="contentinfo">
+        <div className="container">
+          <div className="footer__top">
+            <div className="footer__brand-col">
+              <div className="footer__brand">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/Logo.png" alt="Logo Intech Jr." className="footer__logo" />
+                <span className="footer__name">Intech Jr.</span>
+              </div>
+              <p className="footer__tagline">
+                Soluções digitais em desenvolvimento web, design e marketing.
+                Baseada em Muzambinho — MG.
+              </p>
+              <div className="footer__social">
+                <a
+                  href="https://www.instagram.com/intech.jr/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer__social-link"
+                  aria-label="Instagram da Intech Jr."
+                >
+                  <i className="bi bi-instagram" aria-hidden="true" />
+                </a>
+                <a
+                  href="https://www.facebook.com/aajracam?locale=pt_BR"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer__social-link"
+                  aria-label="Facebook da Intech Jr."
+                >
+                  <i className="bi bi-facebook" aria-hidden="true" />
+                </a>
+                <a
+                  href="https://wa.me/35910010967"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer__social-link"
+                  aria-label="WhatsApp da Intech Jr."
+                >
+                  <i className="bi bi-whatsapp" aria-hidden="true" />
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <h4 className="footer__heading">Navegação</h4>
+              <nav className="footer__links" aria-label="Links do rodapé">
+                <a href="/#services" className="footer__link">Serviços</a>
+                <a href="/#about" className="footer__link">Sobre nós</a>
+                <a href="/#portfolio" className="footer__link">Portfólio</a>
+                <a href="/#contact" className="footer__link">Contato</a>
+              </nav>
+            </div>
+
+            <div>
+              <h4 className="footer__heading">Serviços</h4>
+              <nav className="footer__links" aria-label="Serviços oferecidos">
+                <a href="/#services" className="footer__link">Desenvolvimento Web</a>
+                <a href="/#services" className="footer__link">Design Gráfico</a>
+                <a href="/#services" className="footer__link">Marketing Digital</a>
+              </nav>
+            </div>
+
+            <div>
+              <h4 className="footer__heading">Contato</h4>
+              <div className="footer__contact-info">
+                <a href="mailto:intechjr@gmail.com" className="footer__link">
+                  intechjr@gmail.com
+                </a>
+                <a href="https://wa.me/35910010967" className="footer__link" target="_blank" rel="noopener noreferrer">
+                  (35) 91001-0967
+                </a>
+                <span className="footer__link footer__link--location">
+                  Muzambinho – MG
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className="footer__bottom">
+            <span>© 2026 Intech Jr. Todos os direitos reservados.</span>
+            <span className="footer__bottom-right">
+              Vinculada ao IFSULDEMINAS · Campus Muzambinho
+            </span>
+          </div>
+        </div>
+      </footer>
     </>
   )
 }
