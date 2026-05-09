@@ -2847,3 +2847,96 @@ button {
   }
 }
 
+/* =============================================
+   27. OLIP Page — Gallery
+   ============================================= */
+
+.olip-gallery-section {
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.olip-gallery-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(46, 204, 113, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(46, 204, 113, 0.02) 1px, transparent 1px);
+  background-size: 72px 72px;
+  pointer-events: none;
+}
+
+/* Year selector bar */
+.olip-gallery__years {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  margin-bottom: 28px;
+  scrollbar-width: none;
+}
+
+.olip-gallery__years::-webkit-scrollbar {
+  display: none;
+}
+
+.olip-gallery__year-btn {
+  flex-shrink: 0;
+  padding: 8px 18px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all var(--transition);
+  font-family: inherit;
+}
+
+.olip-gallery__year-btn:hover {
+  border-color: rgba(46, 204, 113, 0.35);
+  color: #6ee7a4;
+  background: rgba(46, 204, 113, 0.06);
+}
+
+.olip-gallery__year-btn.active {
+  background: rgba(46, 204, 113, 0.12);
+  border-color: rgba(46, 204, 113, 0.5);
+  color: #2ecc71;
+  box-shadow: 0 0 12px rgba(46, 204, 113, 0.2);
+}
+
+/* Carousel overrides — green accents */
+.olip-gallery__carousel .pf-carousel__arrow {
+  transition: all var(--transition);
+}
+
+.olip-gallery__arrow:hover:not(:disabled) {
+  background: rgba(46, 204, 113, 0.1) !important;
+  border-color: rgba(46, 204, 113, 0.35) !important;
+  color: #2ecc71 !important;
+}
+
+.olip-gallery__dot.active {
+  background: linear-gradient(135deg, #2ecc71, #27ae60) !important;
+  box-shadow: 0 0 8px rgba(46, 204, 113, 0.4) !important;
+}
+
+.olip-gallery__tag {
+  background: linear-gradient(135deg, #2ecc71, #58d68d) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+.olip-gallery__counter-current {
+  background: linear-gradient(135deg, #2ecc71, #58d68d) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
