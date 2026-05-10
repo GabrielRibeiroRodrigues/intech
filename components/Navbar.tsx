@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 
 function AnimatedLink({
   href,
@@ -28,11 +29,11 @@ function AnimatedLink({
 }
 
 const navLinks = [
-  { href: '#services', label: 'Serviços', id: 'services' },
-  { href: '#about', label: 'Sobre', id: 'about' },
-  { href: '#portfolio', label: 'Portfólio', id: 'portfolio' },
-  { href: '#team', label: 'Equipe', id: 'team' },
-  { href: '#contact', label: 'Contato', id: 'contact' },
+  { href: '/#services', label: 'Serviços', id: 'services' },
+  { href: '/#about', label: 'Sobre', id: 'about' },
+  { href: '/#portfolio', label: 'Portfólio', id: 'portfolio' },
+  { href: '/#team', label: 'Equipe', id: 'team' },
+  { href: '/#contact', label: 'Contato', id: 'contact' },
 ]
 
 export default function Navbar() {
@@ -40,14 +41,21 @@ export default function Navbar() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [progress, setProgress] = useState(0)
   const [activeSection, setActiveSection] = useState('')
+  const pathname = usePathname()
 
   useEffect(() => {
+    if (pathname === '/olip') {
+      setActiveSection('olip')
+    }
+
     const handleScroll = () => {
       const scrollY = window.scrollY
       setScrolled(scrollY > 20)
 
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight
       setProgress(maxScroll > 0 ? (scrollY / maxScroll) * 100 : 0)
+
+      if (pathname === '/olip') return
 
       const sectionIds = ['contact', 'team', 'portfolio', 'about', 'services']
       let found = ''
@@ -63,7 +71,7 @@ export default function Navbar() {
 
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [pathname])
 
   useEffect(() => {
     if (typeof document === 'undefined') return
@@ -105,9 +113,20 @@ export default function Navbar() {
               ))}
             </nav>
 
+            {/* Divider */}
+            <div className="navbar__divider" aria-hidden="true" />
+
+            {/* OLIP Link — Separated */}
+            <a
+              href="/olip"
+              className={`navbar__olip-link${activeSection === 'olip' ? ' navbar__olip-link--active' : ''}`}
+            >
+              <span className="navbar__olip-label">15ª OLIP</span>
+            </a>
+
             {/* Actions */}
             <div className="navbar__actions">
-              <a href="#contact" className="btn btn-primary btn-sm navbar__cta-desktop">
+              <a href="/#contact" className="btn btn-primary btn-sm navbar__cta-desktop">
                 Fale Conosco
               </a>
 
@@ -157,10 +176,22 @@ export default function Navbar() {
               {label}
             </a>
           ))}
+
+          {/* Divider in sidebar */}
+          <div className="navbar__sidebar-divider" aria-hidden="true" />
+
+          {/* OLIP in sidebar */}
+          <a
+            href="/olip"
+            className="navbar__sidebar-link navbar__sidebar-link--olip"
+            onClick={closeSidebar}
+          >
+            15ª OLIP
+          </a>
         </nav>
 
         <div className="navbar__sidebar-footer">
-          <a href="#contact" className="btn btn-primary" onClick={closeSidebar}>
+          <a href="/#contact" className="btn btn-primary" onClick={closeSidebar}>
             Fale Conosco
           </a>
         </div>
