@@ -9,7 +9,44 @@ export const metadata: Metadata = {
     'A 15ª edição da Olimpíada Interna de Programação do IFSULDEMINAS está chegando. Mostre suas habilidades, resolva desafios algorítmicos e seja o destaque do campus.',
 }
 
+const olipNews = [
+  {
+    tag: 'Destaque',
+    date: '20 de junho de 2026',
+    title: '15ª OLIP já tem data marcada',
+    text: 'A próxima edição já está confirmada. Reúna sua equipe, acompanhe os detalhes do regulamento e prepare-se para mais um dia de desafios algorítmicos em Muzambinho.',
+    href: '#sobre',
+    image: '/images/olip15.jfif',
+    alt: 'Arte da 15ª OLIP',
+    cta: 'Ver detalhes da edição',
+  },
+  {
+    tag: 'Resultado',
+    date: '7 de julho de 2025',
+    title: '14ª edição: confira as equipes ganhadoras',
+    text: 'Veja quem subiu ao pódio na edição mais recente e representou o campus com destaque na competição.',
+    href: 'https://muz.ifsuldeminas.edu.br/noticias/6361-14-edicao-da-olimpiada-interna-de-programacao-olip-confira-as-equipes-ganhadoras',
+    image: '/images/olip14.jpeg',
+    alt: 'Registro da 14ª edição da OLIP',
+    cta: 'Ler notícia',
+    external: true,
+  },
+  {
+    tag: 'Retrospectiva',
+    date: '27 de junho de 2023',
+    title: '13ª OLIP reuniu 245 alunos',
+    text: 'A edição de 2023 reforçou o alcance da olimpíada e mostrou a força da programação no instituto.',
+    href: 'https://muz.ifsuldeminas.edu.br/noticias/4962-13-edicao-da-olimpiada-interna-de-programacao-reune-245-alunos',
+    image: '/images/olip13.png',
+    alt: 'Arte da 13ª edição da OLIP',
+    cta: 'Ler notícia',
+    external: true,
+  },
+]
+
 export default function OlipPage() {
+  const [featuredNews, ...secondaryNews] = olipNews
+
   return (
     <>
       <Navbar />
@@ -143,6 +180,94 @@ export default function OlipPage() {
                 </div>
               </div>
 
+            </div>
+          </div>
+        </section>
+
+        {/* ── Últimas Notícias ── */}
+        <section id="noticias" className="section olip-news-section" aria-labelledby="olip-news-title">
+          <div className="container">
+            <div className="section-header reveal">
+              <div className="section-chip olip-section-chip">
+                <i className="bi bi-megaphone-fill" />
+                Últimas notícias
+              </div>
+              <h2 id="olip-news-title" className="section-title">
+                O que está movimentando a{' '}
+                <span className="olip-green-text">OLIP</span>
+              </h2>
+              <p className="section-subtitle">
+                Atualizações da edição atual, resultados recentes e marcos que ajudam a contar a trajetória da competição.
+              </p>
+            </div>
+
+            <div className="olip-news__grid">
+              <a
+                href={featuredNews.href}
+                className="olip-news-card olip-news-card--featured reveal"
+              >
+                <div className="olip-news-card__media">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={featuredNews.image}
+                    alt={featuredNews.alt}
+                    className="olip-news-card__image"
+                  />
+                </div>
+                <div className="olip-news-card__body">
+                  <div className="olip-news-card__meta">
+                    <span className="olip-news-card__pill">{featuredNews.tag}</span>
+                    <span className="olip-news-card__date">
+                      <i className="bi bi-calendar3" aria-hidden="true" />
+                      {featuredNews.date}
+                    </span>
+                  </div>
+                  <h3 className="olip-news-card__title olip-news-card__title--featured">
+                    {featuredNews.title}
+                  </h3>
+                  <p className="olip-news-card__text olip-news-card__text--featured">
+                    {featuredNews.text}
+                  </p>
+                  <span className="olip-news-card__cta">
+                    {featuredNews.cta}
+                    <i className="bi bi-arrow-right" aria-hidden="true" />
+                  </span>
+                </div>
+              </a>
+
+              <div className="olip-news__stack">
+                {secondaryNews.map((item, index) => (
+                  <a
+                    key={item.title}
+                    href={item.href}
+                    target={item.external ? '_blank' : undefined}
+                    rel={item.external ? 'noopener noreferrer' : undefined}
+                    className="olip-news-card olip-news-card--compact reveal"
+                    style={{ '--i': index + 1 } as React.CSSProperties}
+                  >
+                    <div className="olip-news-card__thumb-wrap">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={item.image}
+                        alt={item.alt}
+                        className="olip-news-card__thumb"
+                      />
+                    </div>
+                    <div className="olip-news-card__body olip-news-card__body--compact">
+                      <div className="olip-news-card__meta olip-news-card__meta--compact">
+                        <span className="olip-news-card__pill">{item.tag}</span>
+                        <span className="olip-news-card__date">{item.date}</span>
+                      </div>
+                      <h3 className="olip-news-card__title">{item.title}</h3>
+                      <p className="olip-news-card__text">{item.text}</p>
+                      <span className="olip-news-card__cta">
+                        {item.cta}
+                        <i className="bi bi-arrow-up-right" aria-hidden="true" />
+                      </span>
+                    </div>
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </section>

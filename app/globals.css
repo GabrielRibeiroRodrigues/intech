@@ -3183,3 +3183,203 @@ button {
   }
 }
 
+/* =============================================
+   29. OLIP Page — News
+   ============================================= */
+
+.olip-news-section {
+  background:
+    radial-gradient(circle at top right, rgba(46, 204, 113, 0.08), transparent 32%),
+    linear-gradient(180deg, #050b18 0%, #07101f 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.olip-news-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(46, 204, 113, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(46, 204, 113, 0.02) 1px, transparent 1px);
+  background-size: 72px 72px;
+  pointer-events: none;
+}
+
+.olip-news__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(320px, 0.95fr);
+  gap: 24px;
+  margin-top: 56px;
+  position: relative;
+  z-index: 1;
+}
+
+.olip-news__stack {
+  display: grid;
+  gap: 20px;
+}
+
+.olip-news-card {
+  display: block;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: rgba(9, 17, 33, 0.88);
+  overflow: hidden;
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+  text-decoration: none;
+}
+
+.olip-news-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(46, 204, 113, 0.2);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+.olip-news-card__media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.olip-news-card__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(5, 11, 24, 0.04) 0%, rgba(5, 11, 24, 0.8) 100%);
+}
+
+.olip-news-card__image,
+.olip-news-card__thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.olip-news-card:hover .olip-news-card__image,
+.olip-news-card:hover .olip-news-card__thumb {
+  transform: scale(1.04);
+}
+
+.olip-news-card__body {
+  padding: 24px 26px 28px;
+}
+
+.olip-news-card__body--compact {
+  padding: 20px 22px 22px;
+}
+
+.olip-news-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  margin-bottom: 14px;
+}
+
+.olip-news-card__meta--compact {
+  margin-bottom: 12px;
+}
+
+.olip-news-card__pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(46, 204, 113, 0.09);
+  border: 1px solid rgba(46, 204, 113, 0.18);
+  color: #6ee7a4;
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.olip-news-card__date {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.olip-news-card__title {
+  font-size: 1.12rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+
+.olip-news-card__title--featured {
+  font-size: clamp(1.45rem, 2.5vw, 2rem);
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+
+.olip-news-card__text {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.olip-news-card__text--featured {
+  max-width: 58ch;
+  font-size: 0.96rem;
+}
+
+.olip-news-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #6ee7a4;
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.olip-news-card--compact {
+  display: grid;
+  grid-template-columns: 164px minmax(0, 1fr);
+  align-items: stretch;
+}
+
+.olip-news-card__thumb-wrap {
+  min-height: 100%;
+  overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+  .olip-news__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .olip-news-card--compact {
+    grid-template-columns: 180px minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .olip-news__grid {
+    margin-top: 40px;
+  }
+
+  .olip-news-card__body {
+    padding: 20px;
+  }
+
+  .olip-news-card--compact {
+    grid-template-columns: 1fr;
+  }
+
+  .olip-news-card__thumb-wrap {
+    aspect-ratio: 16 / 9;
+  }
+
+  .olip-news-card__title--featured {
+    font-size: 1.55rem;
+  }
+}
+
