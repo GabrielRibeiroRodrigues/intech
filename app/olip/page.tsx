@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
 import OlipGallery from '@/components/OlipGallery'
+import OlipChampions from '@/components/OlipChampions'
 
 export const metadata: Metadata = {
   title: '15ª OLIP — Olimpíada Interna de Programação | Intech Jr.',
@@ -165,6 +166,28 @@ export default function OlipPage() {
 
             <div className="reveal" style={{ '--i': 1 } as React.CSSProperties}>
               <OlipGallery />
+            </div>
+          </div>
+        </section>
+        {/* ── Histórico e Campeões ── */}
+        <section id="historico" className="section olip-champ-section" aria-labelledby="olip-champ-title">
+          <div className="container">
+            <div className="section-header reveal">
+              <div className="section-chip olip-section-chip">
+                <i className="bi bi-trophy-fill" />
+                Histórico
+              </div>
+              <h2 id="olip-champ-title" className="section-title">
+                Campeões de cada{' '}
+                <span className="olip-green-text">edição</span>
+              </h2>
+              <p className="section-subtitle">
+                Conheça as equipes que deixaram sua marca na história da OLIP.
+              </p>
+            </div>
+
+            <div className="reveal" style={{ '--i': 1 } as React.CSSProperties}>
+              <OlipChampions />
             </div>
           </div>
         </section>

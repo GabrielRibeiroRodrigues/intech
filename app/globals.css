@@ -2940,3 +2940,246 @@ button {
   background-clip: text !important;
 }
 
+/* =============================================
+   28. OLIP Page — Champions History Carousel
+   ============================================= */
+
+.olip-champ-section {
+  background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+.olip-champ-section::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(46, 204, 113, 0.04) 0%, transparent 70%);
+  bottom: -100px;
+  left: -150px;
+  pointer-events: none;
+}
+
+.olip-champ {
+  --champ-card-w: 340px;
+  --champ-card-gap: 20px;
+  width: 100%;
+  user-select: none;
+}
+
+/* Track wrapper — clips overflow */
+.olip-champ__track-wrap {
+  overflow: hidden;
+  cursor: grab;
+  border-radius: var(--radius);
+}
+
+.olip-champ__track-wrap--grabbing {
+  cursor: grabbing;
+}
+
+.olip-champ__track {
+  display: flex;
+  gap: var(--champ-card-gap);
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+/* Card */
+.olip-champ__card {
+  width: var(--champ-card-w);
+  flex-shrink: 0;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg-primary);
+  overflow: hidden;
+  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+  pointer-events: none;
+}
+
+.olip-champ__card--active {
+  border-color: rgba(46, 204, 113, 0.3);
+  box-shadow: 0 0 24px rgba(46, 204, 113, 0.08);
+}
+
+/* Card header */
+.olip-champ__card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(39, 174, 96, 0.06));
+  border-bottom: 1px solid rgba(46, 204, 113, 0.15);
+}
+
+.olip-champ__year {
+  font-size: 1.6rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #2ecc71, #58d68d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.olip-champ__edition-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(46, 204, 113, 0.7);
+  background: rgba(46, 204, 113, 0.08);
+  border: 1px solid rgba(46, 204, 113, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 4px 10px;
+}
+
+/* Card body */
+.olip-champ__card-body {
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.olip-champ__champion {
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.olip-champ__champion:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.olip-champ__category {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #2ecc71;
+  margin-bottom: 6px;
+}
+
+.olip-champ__category i {
+  font-size: 0.7rem;
+}
+
+.olip-champ__team {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.olip-champ__members {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin-bottom: 4px;
+}
+
+.olip-champ__campus {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.olip-champ__campus i {
+  font-size: 0.65rem;
+  flex-shrink: 0;
+}
+
+/* Controls */
+.olip-champ__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.olip-champ__arrow {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all var(--transition);
+  font-family: inherit;
+}
+
+.olip-champ__arrow:hover:not(:disabled) {
+  background: rgba(46, 204, 113, 0.1);
+  border-color: rgba(46, 204, 113, 0.35);
+  color: #2ecc71;
+}
+
+.olip-champ__arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.olip-champ__dots {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 280px;
+}
+
+.olip-champ__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: none;
+  background: var(--border);
+  cursor: pointer;
+  padding: 0;
+  transition: all var(--transition);
+  flex-shrink: 0;
+}
+
+.olip-champ__dot.active {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  box-shadow: 0 0 6px rgba(46, 204, 113, 0.4);
+  transform: scale(1.3);
+}
+
+.olip-champ__counter {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.olip-champ__counter-cur {
+  font-weight: 800;
+  background: linear-gradient(135deg, #2ecc71, #58d68d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .olip-champ {
+    --champ-card-w: min(300px, calc(100vw - 64px));
+  }
+}
+

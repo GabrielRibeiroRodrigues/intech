@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 
 interface GalleryImage {
   src: string
@@ -99,17 +99,57 @@ const years = Object.keys(galleryData)
 export default function OlipGallery() {
   const [activeYear, setActiveYear] = useState(years[0])
   const [current, setCurrent] = useState(0)
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const currentRef = useRef(0)
+  const dirRef = useRef<1 | -1>(1)
+  const totalRef = useRef(0)
 
   const images = galleryData[activeYear]
   const total = images.length
+  totalRef.current = total
+
+  const startTimer = useCallback(() => {
+    if (timerRef.current) clearInterval(timerRef.current)
+    timerRef.current = setInterval(() => {
+      const count = totalRef.current
+      const next = currentRef.current + dirRef.current
+      const clamped = Math.max(0, Math.min(next, count - 1))
+      if (clamped >= count - 1) dirRef.current = -1
+      else if (clamped <= 0) dirRef.current = 1
+      currentRef.current = clamped
+      setCurrent(clamped)
+    }, 4000)
+  }, [])
+
+  useEffect(() => {
+    currentRef.current = 0
+    dirRef.current = 1
+    setCurrent(0)
+    startTimer()
+    return () => { if (timerRef.current) clearInterval(timerRef.current) }
+  }, [activeYear, startTimer])
 
   const handleYearChange = (year: number) => {
     setActiveYear(year)
-    setCurrent(0)
   }
 
-  const prev = () => setCurrent(c => Math.max(0, c - 1))
-  const next = () => setCurrent(c => Math.min(total - 1, c + 1))
+  const prev = () => {
+    const val = Math.max(0, currentRef.current - 1)
+    currentRef.current = val
+    setCurrent(val)
+    startTimer()
+  }
+  const next = () => {
+    const val = Math.min(totalRef.current - 1, currentRef.current + 1)
+    currentRef.current = val
+    setCurrent(val)
+    startTimer()
+  }
+  const goTo = (i: number) => {
+    currentRef.current = i
+    setCurrent(i)
+    startTimer()
+  }
 
   return (
     <div className="olip-gallery">
@@ -175,7 +215,7 @@ export default function OlipGallery() {
                 aria-selected={i === current}
                 aria-label={`Ver foto ${i + 1}`}
                 className={`pf-carousel__dot olip-gallery__dot${i === current ? ' active' : ''}`}
-                onClick={() => setCurrent(i)}
+                onClick={() => goTo(i)}
               />
             ))}
           </div>
