@@ -3383,3 +3383,124 @@ button {
   }
 }
 
+/* =============================================
+   30. OLIP Page — Signup / Inscrição
+   ============================================= */
+
+.olip-signup-section {
+  background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+.olip-signup-section::before {
+  content: '';
+  position: absolute;
+  width: 560px;
+  height: 560px;
+  background: radial-gradient(circle, rgba(46, 204, 113, 0.06) 0%, transparent 70%);
+  bottom: -80px;
+  right: -80px;
+  pointer-events: none;
+}
+
+.olip-signup__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.7fr;
+  gap: clamp(32px, 5vw, 56px);
+  align-items: start;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.olip-signup__text {
+  font-size: 0.925rem;
+  color: var(--text-secondary);
+  line-height: 1.78;
+  margin-bottom: 28px;
+  max-width: 46ch;
+}
+
+.olip-signup__info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.olip-signup__info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.olip-signup__info-item i {
+  color: #2ecc71;
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.olip-signup__info-item strong {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+  letter-spacing: 0.01em;
+}
+
+.olip-signup__info-item span {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.olip-signup__divider {
+  height: 1px;
+  background: var(--border);
+  margin: 24px 0;
+}
+
+.olip-signup__contacts-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+}
+
+/* Form card */
+.olip-signup__form-card {
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.olip-signup__iframe {
+  display: block;
+  width: 100%;
+  min-height: 680px;
+  border: none;
+  background: var(--bg-primary);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .olip-signup__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .olip-signup__text {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .olip-signup__iframe {
+    min-height: 560px;
+  }
+}
+

@@ -316,6 +316,76 @@ export default function OlipPage() {
             </div>
           </div>
         </section>
+
+        {/* ── Inscrição ── */}
+        <section id="inscricao" className="section olip-signup-section" aria-labelledby="olip-signup-title">
+          <div className="container">
+            <div className="olip-signup__grid">
+
+              {/* Coluna esquerda — info + canais */}
+              <div className="reveal">
+                <div className="section-chip olip-section-chip">
+                  <i className="bi bi-pencil-square" />
+                  Inscrição
+                </div>
+                <h2 id="olip-signup-title" className="section-title">
+                  Pronto para o{' '}
+                  <span className="olip-green-text">desafio?</span>
+                </h2>
+                <p className="olip-signup__text">
+                  Preencha o formulário ao lado para garantir a vaga da sua equipe na
+                  15ª OLIP. As inscrições ficam abertas até 1º de junho de 2026.
+                </p>
+
+                <div className="contact__links">
+                  <a
+                    href="mailto:olip@ifsuldeminas.edu.br"
+                    className="contact__link-item"
+                    aria-label="Enviar e-mail para a organização"
+                  >
+                    <i className="bi bi-envelope-fill" aria-hidden="true" />
+                    olip@ifsuldeminas.edu.br
+                    <i className="bi bi-arrow-right contact__link-arrow" aria-hidden="true" />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/olip.ifsuldeminas?igsh=MWFhMGY4enJjNTkzZA=="
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="contact__link-item contact__link-item--instagram"
+                    aria-label="Perfil no Instagram da OLIP"
+                  >
+                    <i className="bi bi-instagram" aria-hidden="true" />
+                    Instagram
+                    <i className="bi bi-arrow-right contact__link-arrow" aria-hidden="true" />
+                  </a>
+                  <div className="contact__location">
+                    <i className="bi bi-geo-alt-fill" aria-hidden="true" />
+                    <div>
+                      <strong>IFSULDEMINAS – Campus Muzambinho</strong>
+                      <span>Muzambinho, MG</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Coluna direita — iframe Google Forms */}
+              <div className="form-card olip-signup__form-card reveal" style={{ '--i': 1 } as React.CSSProperties}>
+                <iframe
+                  src="https://forms.gle/pJ2aMk9QVonH54PZ9"
+                  className="olip-signup__iframe"
+                  title="Formulário de inscrição — 15ª OLIP"
+                  loading="lazy"
+                  frameBorder="0"
+                  marginHeight={0}
+                  marginWidth={0}
+                >
+                  Carregando…
+                </iframe>
+              </div>
+
+            </div>
+          </div>
+        </section>
       </main>
 
       {/* ── Footer ── */}
