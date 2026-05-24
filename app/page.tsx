@@ -1,8 +1,45 @@
+import type { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
 import ContactForm from '@/components/ContactForm'
 import StatsCounter from '@/components/StatsCounter'
 import ServicesCarousel from '@/components/ServicesCarousel'
 import PortfolioCarousel from '@/components/PortfolioCarousel'
+
+export const metadata: Metadata = {
+  title: 'Intech Jr — Desenvolvimento Web, Design e Marketing Digital',
+  description:
+    'Empresa júnior do IFSULDEMINAS campus Muzambinho. Criamos sites, identidades visuais e estratégias digitais para transformar seu negócio.',
+  alternates: {
+    canonical: 'https://intechjr.muz.ifsuldeminas.edu.br',
+  },
+  openGraph: {
+    title: 'Intech Jr — Desenvolvimento Web, Design e Marketing Digital',
+    description:
+      'Empresa júnior do IFSULDEMINAS campus Muzambinho. Criamos sites, identidades visuais e estratégias digitais para transformar seu negócio.',
+    url: 'https://intechjr.muz.ifsuldeminas.edu.br',
+  },
+}
+
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Intech Jr.',
+  url: 'https://intechjr.muz.ifsuldeminas.edu.br',
+  logo: 'https://intechjr.muz.ifsuldeminas.edu.br/images/Logo.png',
+  description:
+    'Empresa júnior de tecnologia vinculada ao IFSULDEMINAS, campus Muzambinho. Atuamos com desenvolvimento web, design gráfico e marketing digital.',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Muzambinho',
+    addressRegion: 'MG',
+    addressCountry: 'BR',
+  },
+  parentOrganization: {
+    '@type': 'EducationalOrganization',
+    name: 'IFSULDEMINAS — Campus Muzambinho',
+    url: 'https://muz.ifsuldeminas.edu.br',
+  },
+}
 
 const processSteps = [
   {
@@ -78,6 +115,10 @@ const marqueeItems = [
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+      />
       <Navbar />
 
       {/* ── Hero ── */}
