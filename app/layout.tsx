@@ -2,11 +2,71 @@ import type { Metadata } from 'next'
 import './globals.css'
 import ScrollReveal from '@/components/ScrollReveal'
 
+const BASE_URL = 'https://intechjr.muz.ifsuldeminas.edu.br'
+
 export const metadata: Metadata = {
-  title: 'Intech Jr — Soluções Digitais',
+  metadataBase: new URL(BASE_URL),
+  title: {
+    default: 'Intech Jr — Soluções Digitais',
+    template: '%s | Intech Jr',
+  },
   description:
-    'Desenvolvimento web, design gráfico e marketing digital com qualidade e propósito. Baseada em Muzambinho, MG.',
+    'Desenvolvimento web, design gráfico e marketing digital com qualidade e propósito. Empresa júnior do IFSULDEMINAS, campus Muzambinho, MG.',
+  keywords: [
+    'Intech Jr',
+    'empresa júnior',
+    'desenvolvimento web',
+    'design gráfico',
+    'marketing digital',
+    'IFSULDEMINAS',
+    'Muzambinho',
+    'tecnologia',
+    'Next.js',
+    'React',
+  ],
   authors: [{ name: 'Intech Jr.' }],
+  creator: 'Intech Jr.',
+  openGraph: {
+    type: 'website',
+    locale: 'pt_BR',
+    url: BASE_URL,
+    siteName: 'Intech Jr',
+    title: 'Intech Jr — Soluções Digitais',
+    description:
+      'Desenvolvimento web, design gráfico e marketing digital com qualidade e propósito. Empresa júnior do IFSULDEMINAS, campus Muzambinho, MG.',
+    images: [
+      {
+        url: '/images/Logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'Intech Jr — Soluções Digitais',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Intech Jr — Soluções Digitais',
+    description:
+      'Desenvolvimento web, design gráfico e marketing digital com qualidade e propósito. Empresa júnior do IFSULDEMINAS, campus Muzambinho, MG.',
+    images: ['/images/Logo.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: BASE_URL,
+  },
+  verification: {
+    google: 'c086066f834e6742',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

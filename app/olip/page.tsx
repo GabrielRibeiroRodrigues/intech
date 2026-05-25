@@ -3,10 +3,78 @@ import Navbar from '@/components/Navbar'
 import OlipGallery from '@/components/OlipGallery'
 import OlipChampions from '@/components/OlipChampions'
 
+const BASE_URL = 'https://intechjr.muz.ifsuldeminas.edu.br'
+const PAGE_URL = `${BASE_URL}/olip`
+
 export const metadata: Metadata = {
-  title: '15ª OLIP — Olimpíada Interna de Programação | Intech Jr.',
+  title: '15ª OLIP — Olimpíada Interna de Programação',
   description:
-    'A 15ª edição da Olimpíada Interna de Programação do IFSULDEMINAS está chegando. Mostre suas habilidades, resolva desafios algorítmicos e seja o destaque do campus.',
+    'A 15ª edição da Olimpíada Interna de Programação do IFSULDEMINAS campus Muzambinho acontece em 20 de junho de 2026. Inscreva-se, resolva desafios algorítmicos e destaque-se.',
+  keywords: [
+    'OLIP',
+    'Olimpíada de Programação',
+    'IFSULDEMINAS',
+    'Muzambinho',
+    'competição de programação',
+    'algoritmos',
+    'programação competitiva',
+    'Intech Jr',
+  ],
+  alternates: {
+    canonical: PAGE_URL,
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'pt_BR',
+    url: PAGE_URL,
+    siteName: 'Intech Jr',
+    title: '15ª OLIP — Olimpíada Interna de Programação | IFSULDEMINAS Muzambinho',
+    description:
+      'A 15ª edição da Olimpíada Interna de Programação do IFSULDEMINAS campus Muzambinho acontece em 20 de junho de 2026. Inscreva-se, resolva desafios algorítmicos e destaque-se.',
+    images: [
+      {
+        url: '/images/olip15.jfif',
+        width: 1200,
+        height: 630,
+        alt: 'Arte da 15ª OLIP — Olimpíada Interna de Programação',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '15ª OLIP — Olimpíada Interna de Programação',
+    description:
+      'A 15ª edição da OLIP acontece em 20 de junho de 2026 no IFSULDEMINAS campus Muzambinho.',
+    images: ['/images/olip15.jfif'],
+  },
+}
+
+const olipEventJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Event',
+  name: '15ª OLIP — Olimpíada Interna de Programação',
+  description:
+    'Competição de programação algorítmica voltada aos alunos do IFSULDEMINAS campus Muzambinho.',
+  startDate: '2026-06-20',
+  eventStatus: 'https://schema.org/EventScheduled',
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  location: {
+    '@type': 'Place',
+    name: 'IFSULDEMINAS — Campus Muzambinho',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Muzambinho',
+      addressRegion: 'MG',
+      addressCountry: 'BR',
+    },
+  },
+  organizer: {
+    '@type': 'Organization',
+    name: 'Intech Jr.',
+    url: BASE_URL,
+  },
+  url: PAGE_URL,
+  image: `${BASE_URL}/images/olip15.jfif`,
 }
 
 const olipNews = [
@@ -49,6 +117,10 @@ export default function OlipPage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(olipEventJsonLd) }}
+      />
       <Navbar />
 
       {/* ── Hero ── */}
