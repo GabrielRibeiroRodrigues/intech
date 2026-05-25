@@ -6,7 +6,7 @@ import ServicesCarousel from '@/components/ServicesCarousel'
 import PortfolioCarousel from '@/components/PortfolioCarousel'
 
 export const metadata: Metadata = {
-  title: 'Intech Jr — Desenvolvimento Web, Design e Marketing Digital',
+  title: { absolute: 'Intech Jr — Desenvolvimento Web, Design e Marketing Digital' },
   description:
     'Empresa júnior do IFSULDEMINAS campus Muzambinho. Criamos sites, identidades visuais e estratégias digitais para transformar seu negócio.',
   alternates: {
