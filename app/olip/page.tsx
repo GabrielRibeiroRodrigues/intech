@@ -112,6 +112,15 @@ const olipNews = [
   },
 ]
 
+const olipSponsors = [
+  { name: 'Aida', logo: '/images/Aida.png' },
+  { name: 'Intech', logo: '/images/Intech.png' },
+  { name: 'Lerian', logo: '/images/Lerian.png' },
+  { name: 'Sellentt', logo: '/images/Sellentt.png' },
+  { name: 'Venturus', logo: '/images/Venturus_Horizontal_Silk.png', style: { transform: 'scale(1.4)' } },
+  { name: 'UBY', logo: '/images/UBY - Horizontal - TOTAL Preto - PNG.png', className: 'sponsor-logo--invert' },
+]
+
 export default function OlipPage() {
   const [featuredNews, ...secondaryNews] = olipNews
 
@@ -455,6 +464,42 @@ export default function OlipPage() {
                 </iframe>
               </div>
 
+            </div>
+          </div>
+        </section>
+
+        {/* ── Patrocinadores ── */}
+        <section id="patrocinadores" className="section olip-sponsors-section" aria-labelledby="olip-sponsors-title">
+          <div className="container">
+            <div className="section-header reveal">
+              <div className="section-chip olip-section-chip">
+                <i className="bi bi-star-fill" />
+                Patrocinadores
+              </div>
+              <h2 id="olip-sponsors-title" className="section-title">
+                Quem apoia a <span className="olip-green-text">15ª edição</span>
+              </h2>
+              <p className="section-subtitle">
+                Agradecemos as empresas e instituições que tornam a OLIP possível.
+              </p>
+            </div>
+
+            <div className="reveal" style={{ '--i': 1 } as React.CSSProperties}>
+              <div className="marquee-strip" aria-hidden="true" style={{ marginTop: '2rem' }}>
+                <div className="marquee-track">
+                  {[...olipSponsors, ...olipSponsors].map((sponsor, i) => (
+                    <span key={i} className="marquee-item" style={{ padding: '0 40px' }}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img 
+                        src={sponsor.logo} 
+                        alt={sponsor.name} 
+                        className={`sponsor-logo ${sponsor.className || ''}`}
+                        style={sponsor.style}
+                      />
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </section>
