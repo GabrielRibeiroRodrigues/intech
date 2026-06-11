@@ -2869,7 +2869,83 @@ button {
 }
 
 /* =============================================
-   27. OLIP Page — Gallery
+   27. OLIP Page — Schedule
+   ============================================= */
+
+.olip-schedule-section {
+  background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+.olip-schedule-section::before {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(46, 204, 113, 0.05) 0%, transparent 70%);
+  top: 50%;
+  left: -100px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.olip-schedule__table-wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.olip-schedule__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.olip-schedule__table thead th {
+  background: rgba(255, 255, 255, 0.03);
+  color: #6ee7a4;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 12px 20px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.olip-schedule__table tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background var(--transition);
+}
+
+.olip-schedule__table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.olip-schedule__table tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.olip-schedule__table tbody td {
+  padding: 13px 20px;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  vertical-align: middle;
+}
+
+.olip-schedule__table tbody tr.olip-schedule__row--highlight {
+  background: rgba(46, 204, 113, 0.07) !important;
+}
+
+.olip-schedule__table tbody tr.olip-schedule__row--highlight td {
+  color: #7ee787;
+  font-weight: 600;
+}
+
+/* =============================================
+   28. OLIP Page — Gallery
    ============================================= */
 
 .olip-gallery-section {

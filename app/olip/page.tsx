@@ -112,6 +112,16 @@ const olipNews = [
   },
 ]
 
+const olipSchedule = [
+  { activity: 'Aquecimento',               time: '09h00 – 11h00' },
+  { activity: 'Intervalo / Almoço',        time: '10h30 – 12h00' },
+  { activity: 'Foto Geral',                time: '12h15'          },
+  { activity: 'Competição',                time: '12h30 – 16h30', highlight: true },
+  { activity: 'Palestra',                  time: '16h30 – 17h15' },
+  { activity: 'Pitch dos Patrocinadores',  time: '17h15 – 18h00' },
+  { activity: 'Encerramento da Competição',time: '18h00 – 19h00' },
+]
+
 const olipSponsors = [
   { name: 'Aida', logo: '/images/Aida.png' },
   { name: 'Intech', logo: '/images/Intech.png' },
@@ -194,6 +204,10 @@ export default function OlipPage() {
               Saiba mais
               <i className="bi bi-arrow-down" aria-hidden="true" />
             </a>
+            <a href="#cronograma" className="btn btn-ghost btn-lg">
+              <i className="bi bi-clock" aria-hidden="true" />
+              Veja o cronograma
+            </a>
           </div>
         </div>
 
@@ -261,6 +275,47 @@ export default function OlipPage() {
                 </div>
               </div>
 
+            </div>
+          </div>
+        </section>
+
+        {/* ── Cronograma ── */}
+        <section id="cronograma" className="section olip-schedule-section" aria-labelledby="olip-schedule-title">
+          <div className="container">
+            <div className="section-header reveal">
+              <div className="section-chip olip-section-chip">
+                <i className="bi bi-clock-fill" />
+                Cronograma
+              </div>
+              <h2 id="olip-schedule-title" className="section-title">
+                Como será o{' '}
+                <span className="olip-green-text">dia do evento</span>
+              </h2>
+              <p className="section-subtitle">
+                Confira a programação completa da 15ª OLIP e planeje sua participação.
+              </p>
+            </div>
+
+            <div className="olip-schedule__table-wrap reveal" style={{ '--i': 1 } as React.CSSProperties}>
+              <table className="olip-schedule__table">
+                <thead>
+                  <tr>
+                    <th>Atividade</th>
+                    <th>Horário</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {olipSchedule.map(({ activity, time, highlight }) => (
+                    <tr
+                      key={activity}
+                      className={highlight ? 'olip-schedule__row--highlight' : undefined}
+                    >
+                      <td>{activity}</td>
+                      <td>{time}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </section>
