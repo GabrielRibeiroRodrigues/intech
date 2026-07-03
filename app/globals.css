@@ -50,6 +50,12 @@
 
   --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --font-body: 'Inter', sans-serif;
+
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
 /* =============================================
@@ -69,7 +75,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--font-body), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 16px;
   line-height: 1.6;
   background-color: var(--bg-primary);
@@ -128,6 +134,7 @@ button {
 }
 
 .section-chip {
+  font-family: var(--font-mono);
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -144,8 +151,9 @@ button {
 }
 
 .section-title {
+  font-family: var(--font-display);
   font-size: clamp(1.7rem, 3.5vw, 2.75rem);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.03em;
   color: var(--text-primary);
   margin-bottom: 16px;
@@ -652,8 +660,9 @@ button {
 }
 
 .hero__title {
+  font-family: var(--font-display);
   font-size: clamp(2.6rem, 7.5vw, 6rem);
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1.02;
   letter-spacing: -0.04em;
   color: #fff;
@@ -787,6 +796,7 @@ button {
 }
 
 .marquee-item {
+  font-family: var(--font-mono);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -895,6 +905,7 @@ button {
 }
 
 .stat__number {
+  font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 800;
   line-height: 1;
@@ -953,6 +964,7 @@ button {
 }
 
 .svc-tab__btn-num {
+  font-family: var(--font-mono);
   font-size: 0.6rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -1470,6 +1482,7 @@ button {
 }
 
 .process-step__num {
+  font-family: var(--font-mono);
   font-size: 0.6rem;
   font-weight: 800;
   letter-spacing: 0.1em;
@@ -1573,6 +1586,7 @@ button {
 }
 
 .pf-carousel__tag {
+  font-family: var(--font-mono);
   display: block;
   font-size: 0.65rem;
   font-weight: 700;
@@ -1787,6 +1801,7 @@ button {
 }
 
 .cta-section__title {
+  font-family: var(--font-display);
   font-size: clamp(1.75rem, 4.5vw, 3rem);
   font-weight: 800;
   color: #fff;
@@ -2061,6 +2076,7 @@ button {
 }
 
 .footer__name {
+  font-family: var(--font-display);
   font-size: 1.05rem;
   font-weight: 700;
   letter-spacing: -0.01em;
@@ -2478,6 +2494,7 @@ button {
    ============================================= */
 @media (max-width: 480px) {
   .hero__badge {
+    font-family: var(--font-mono);
     font-size: 0.62rem;
     padding: 6px 12px;
   }

@@ -1,6 +1,25 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import ScrollReveal from '@/components/ScrollReveal'
+import { Inter, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
+
+const inter = Inter({
+    subsets: ["latin"],
+    variable: "--font-body",
+    display: "swap",
+});
+
+const jakarta = Plus_Jakarta_Sans({
+    subsets: ["latin"],
+    variable: "--font-display",
+    display: "swap",
+});
+
+const mono = JetBrains_Mono({
+    subsets: ["latin"],
+    variable: "--font-mono",
+    display: "swap",
+});
 
 const BASE_URL = 'https://intechjr.muz.ifsuldeminas.edu.br'
 
@@ -82,7 +101,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
         />
       </head>
-      <body>
+      <body className={`${inter.variable} ${jakarta.variable} ${mono.variable}`}>
         <ScrollReveal />
         {children}
       </body>
