@@ -147,14 +147,15 @@ export default function Home() {
           </div>
 
           <h1 id="hero-title" className="hero__title">
-            Tecnologia que{' '}
-            <span className="gradient-text">transforma</span>{' '}
-            ideias em realidade
+            Feito por estudantes.{' '}
+            <span className="gradient-text">Entregue</span>{' '}
+            como profissional.
           </h1>
 
           <p className="hero__subtitle">
-            Transformamos ideias em produtos digitais de alto impacto — com design,
-            tecnologia e estratégia alinhados ao crescimento do seu negócio.
+            Somos a empresa júnior de tecnologia do IFSULDEMINAS. Desenvolvemos
+            sites, identidades visuais e estratégias digitais — com rigor técnico
+            e a garra de quem aprende fazendo.
           </p>
 
           <div className="hero__cta">
@@ -214,12 +215,11 @@ export default function Home() {
                 O que fazemos
               </div>
               <h2 id="services-title" className="section-title">
-                Serviços pensados{' '}
-                <span className="gradient-text">para o seu crescimento</span>
+                O que a Intech faz
               </h2>
               <p className="section-subtitle">
-                Unimos conhecimento técnico e criatividade para entregar soluções
-                que realmente fazem diferença.
+                Web, design e marketing — feitos por quem entende de tecnologia
+                e está aprendendo na prática.
               </p>
             </div>
 
@@ -254,8 +254,7 @@ export default function Home() {
                   Sobre nós
                 </div>
                 <h2 id="about-title" className="section-title">
-                  Inovação com propósito,{' '}
-                  <span className="gradient-text">resultados reais</span>
+                  Quem somos
                 </h2>
                 <p className="about__text">
                   A Intech Jr. é uma empresa júnior de tecnologia com sede no IFSULDEMINAS
@@ -263,9 +262,8 @@ export default function Home() {
                   desenvolvimento web à identidade visual e estratégias de marketing digital.
                 </p>
                 <p className="about__text">
-                  Nossos projetos seguem metodologias ágeis e processos estruturados,
-                  garantindo qualidade técnica, prazos cumpridos e resultados que geram
-                  valor real para o negócio do cliente.
+                  Cada projeto é desenvolvido por alunos reais, com orientação técnica,
+                  prazos sérios e entrega real. Não é exercício — é trabalho de verdade.
                 </p>
 
                 <div className="about__highlights">
@@ -329,12 +327,10 @@ export default function Home() {
                 Como trabalhamos
               </div>
               <h2 id="process-title" className="section-title">
-                Do briefing à entrega,{' '}
-                <span className="gradient-text">sem complicação</span>
+                Como funciona
               </h2>
               <p className="section-subtitle">
-                Um processo claro e transparente para que você saiba exatamente
-                o que esperar em cada etapa.
+                Simples, sem enrolação. Do briefing ao produto final em quatro etapas.
               </p>
             </div>
 
@@ -369,12 +365,10 @@ export default function Home() {
                 Portfólio
               </div>
               <h2 id="portfolio-title" className="section-title">
-                Projetos que{' '}
-                <span className="gradient-text">falam por si</span>
+                Portfólio
               </h2>
               <p className="section-subtitle">
-                Cada projeto é uma história de parceria, criatividade e
-                tecnologia aplicada.
+                Alguns dos trabalhos que entregamos para parceiros e clientes reais.
               </p>
             </div>
 
@@ -393,12 +387,10 @@ export default function Home() {
                 Nossa Equipe
               </div>
               <h2 id="team-title" className="section-title">
-                Pessoas que fazem a{' '}
-                <span className="gradient-text">magia acontecer</span>
+                Quem faz acontecer
               </h2>
               <p className="section-subtitle">
-                Nossa equipe multidisciplinar une talento, criatividade e técnica
-                para entregar soluções digitais de excelência.
+                Estudantes do IFSULDEMINAS que escolheram aprender fazendo.
               </p>
             </div>
 
@@ -416,23 +408,17 @@ export default function Home() {
 
         {/* ── CTA Strip ── */}
         <section className="cta-section" aria-labelledby="cta-title">
-          <div className="cta-section__orb cta-section__orb--1" aria-hidden="true" />
-          <div className="cta-section__orb cta-section__orb--2" aria-hidden="true" />
           <div className="container cta-section__inner">
-            <div className="section-chip" style={{ margin: '0 auto 20px' }}>
-              <i className="bi bi-chat-heart-fill" />
-              Vamos conversar
-            </div>
             <h2 id="cta-title" className="cta-section__title">
-              Pronto para transformar sua ideia?
+              Bora construir junto?
             </h2>
             <p className="cta-section__subtitle">
-              Nossa equipe está pronta para criar a solução ideal — com agilidade,
-              qualidade e preço justo. Sem burocracia.
+              Manda o seu briefing. A gente responde rápido, sem enrolação
+              e sem surpresa no preço.
             </p>
             <a href="#contact" className="btn btn-primary btn-lg">
               <i className="bi bi-chat-dots-fill" />
-              Fale com a gente agora
+              Fale com a gente
             </a>
           </div>
         </section>
@@ -446,8 +432,7 @@ export default function Home() {
                 Contato
               </div>
               <h2 id="contact-title" className="section-title">
-                Entre em{' '}
-                <span className="gradient-text">contato</span>
+                Entre em contato
               </h2>
               <p className="section-subtitle">
                 Preencha o formulário ou escolha um de nossos canais de atendimento.

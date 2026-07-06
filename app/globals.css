@@ -861,17 +861,7 @@ button {
   overflow: hidden;
 }
 
-.stats::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  height: 100%;
-  background: radial-gradient(ellipse, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
-  pointer-events: none;
-}
+
 
 .stats__grid {
   display: grid;
@@ -1174,17 +1164,7 @@ button {
   overflow: hidden;
 }
 
-.about::before {
-  content: '';
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.06) 0%, transparent 70%);
-  top: 50%;
-  right: -100px;
-  transform: translateY(-50%);
-  pointer-events: none;
-}
+
 
 .about__grid {
   display: grid;
@@ -1305,10 +1285,10 @@ button {
 }
 
 .about__highlight-item:hover {
-  border-color: rgba(59, 130, 246, 0.22);
-  background: var(--accent-light);
+  border-color: rgba(59, 130, 246, 0.4);
+  background: rgba(59, 130, 246, 0.07);
   color: var(--text-primary);
-  transform: translateX(4px);
+  box-shadow: inset 3px 0 0 var(--accent);
 }
 
 .about__highlight-item i {
@@ -1329,16 +1309,7 @@ button {
   overflow: hidden;
 }
 
-.history::before {
-  content: '';
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, transparent 70%);
-  bottom: -100px;
-  left: -100px;
-  pointer-events: none;
-}
+
 
 .history__grid {
   display: grid;
@@ -1393,16 +1364,7 @@ button {
   overflow: hidden;
 }
 
-.process::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(59, 130, 246, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(59, 130, 246, 0.025) 1px, transparent 1px);
-  background-size: 64px 64px;
-  pointer-events: none;
-}
+
 
 .process__timeline {
   display: grid;
@@ -1541,9 +1503,7 @@ button {
 }
 
 .pf-carousel__slide:hover {
-  transform: translateY(-5px);
   box-shadow: var(--shadow-lg);
-  border-color: rgba(59, 130, 246, 0.2);
 }
 
 .pf-carousel__img {
@@ -1692,17 +1652,7 @@ button {
   overflow: hidden;
 }
 
-.team-section::before {
-  content: '';
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, transparent 70%);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-}
+
 
 .team-photo-wrap {
   position: relative;
@@ -2136,7 +2086,6 @@ button {
   background: linear-gradient(135deg, rgba(59, 130, 246, 0.18), rgba(139, 92, 246, 0.18));
   border-color: rgba(59, 130, 246, 0.3);
   color: var(--accent-hover);
-  transform: translateY(-2px);
 }
 
 .footer__bottom {
