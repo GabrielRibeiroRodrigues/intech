@@ -25,7 +25,7 @@ const organizationJsonLd = {
   '@type': 'Organization',
   name: 'Intech Jr.',
   url: 'https://intechjr.muz.ifsuldeminas.edu.br',
-  logo: 'https://intechjr.muz.ifsuldeminas.edu.br/images/Logo.png',
+  logo: 'https://intechjr.muz.ifsuldeminas.edu.br/images/Logo.webp',
   description:
     'Empresa júnior de tecnologia vinculada ao IFSULDEMINAS, campus Muzambinho. Atuamos com desenvolvimento web, design gráfico e marketing digital.',
   address: {
@@ -70,7 +70,7 @@ const processSteps = [
 
 const portfolio = [
   {
-    img: '/images/img.png',
+    img: '/images/img.webp',
     alt: 'Projeto AgitaJr',
     title: 'AgitaJr',
     text: 'Identidade visual para a AgitaJr',
@@ -91,7 +91,7 @@ const portfolio = [
     tag: 'Design',
   },
   {
-    img: '/images/portifolio3.jpg',
+    img: '/images/portifolio3.webp',
     alt: 'Projeto de Marketing',
     title: 'Campanha Digital',
     text: 'Estratégia e criação de conteúdo para redes sociais',
@@ -236,7 +236,7 @@ export default function Home() {
               {/* Visual */}
               <div className="about__image-wrap reveal">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/design.jpg" alt="Equipe Intech Jr. trabalhando" />
+                <img src="/images/design.webp" alt="Equipe Intech Jr. trabalhando" />
                 <div className="about__image-badge" aria-hidden="true">
                   <span className="about__image-badge-num">2017</span>
                   <span className="about__image-badge-label">Fundação</span>
@@ -405,7 +405,7 @@ export default function Home() {
             <div className="team-photo-wrap reveal" style={{ '--i': 1 } as React.CSSProperties}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/equipe.png"
+                src="/images/equipe.webp"
                 alt="Equipe Intech Jr."
                 className="team-photo"
               />
