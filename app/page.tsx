@@ -1,8 +1,45 @@
+import type { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
 import ContactForm from '@/components/ContactForm'
 import StatsCounter from '@/components/StatsCounter'
 import ServicesCarousel from '@/components/ServicesCarousel'
 import PortfolioCarousel from '@/components/PortfolioCarousel'
+
+export const metadata: Metadata = {
+  title: { absolute: 'Intech Jr — Desenvolvimento Web, Design e Marketing Digital' },
+  description:
+    'Empresa júnior do IFSULDEMINAS campus Muzambinho. Criamos sites, identidades visuais e estratégias digitais para transformar seu negócio.',
+  alternates: {
+    canonical: 'https://intechjr.muz.ifsuldeminas.edu.br',
+  },
+  openGraph: {
+    title: 'Intech Jr — Desenvolvimento Web, Design e Marketing Digital',
+    description:
+      'Empresa júnior do IFSULDEMINAS campus Muzambinho. Criamos sites, identidades visuais e estratégias digitais para transformar seu negócio.',
+    url: 'https://intechjr.muz.ifsuldeminas.edu.br',
+  },
+}
+
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Intech Jr.',
+  url: 'https://intechjr.muz.ifsuldeminas.edu.br',
+  logo: 'https://intechjr.muz.ifsuldeminas.edu.br/images/Logo.png',
+  description:
+    'Empresa júnior de tecnologia vinculada ao IFSULDEMINAS, campus Muzambinho. Atuamos com desenvolvimento web, design gráfico e marketing digital.',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Muzambinho',
+    addressRegion: 'MG',
+    addressCountry: 'BR',
+  },
+  parentOrganization: {
+    '@type': 'EducationalOrganization',
+    name: 'IFSULDEMINAS — Campus Muzambinho',
+    url: 'https://muz.ifsuldeminas.edu.br',
+  },
+}
 
 const processSteps = [
   {
@@ -78,6 +115,10 @@ const marqueeItems = [
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+      />
       <Navbar />
 
       {/* ── Hero ── */}
@@ -245,6 +286,40 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ── History (ACAM → InTech) ── */}
+        <section id="history" className="section history" aria-labelledby="history-title">
+          <div className="container">
+            <div className="history__grid">
+              {/* Content */}
+              <div className="reveal">
+                <div className="section-chip">
+                  <i className="bi bi-clock-history" />
+                  Nossa História
+                </div>
+                <h2 id="history-title" className="section-title">
+                  De ACAM Jr. a{' '}
+                  <span className="gradient-text">InTech Jr.</span>
+                </h2>
+                <p className="history__text">
+                  A InTech Jr. é a continuidade da ACAM Jr., agora com uma nova
+                  identidade e posicionamento, mantendo o mesmo propósito:
+                  desenvolver soluções tecnológicas e formar profissionais
+                  preparados para o mercado.
+                </p>
+              </div>
+
+              {/* Image */}
+              <div className="history__image-wrap reveal" style={{ '--i': 1 } as React.CSSProperties}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/acamin.jpeg"
+                  alt="Equipe ACAM Jr. — origem da InTech Jr."
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ── Process ── */}
         <section className="section process" aria-labelledby="process-title">
           <div className="container">
@@ -305,6 +380,36 @@ export default function Home() {
 
             <div className="reveal" style={{ '--i': 1 } as React.CSSProperties}>
               <PortfolioCarousel items={portfolio} />
+            </div>
+          </div>
+        </section>
+
+        {/* ── Team ── */}
+        <section id="team" className="section team-section" aria-labelledby="team-title">
+          <div className="container">
+            <div className="section-header reveal">
+              <div className="section-chip">
+                <i className="bi bi-people-fill" />
+                Nossa Equipe
+              </div>
+              <h2 id="team-title" className="section-title">
+                Pessoas que fazem a{' '}
+                <span className="gradient-text">magia acontecer</span>
+              </h2>
+              <p className="section-subtitle">
+                Nossa equipe multidisciplinar une talento, criatividade e técnica
+                para entregar soluções digitais de excelência.
+              </p>
+            </div>
+
+            <div className="team-photo-wrap reveal" style={{ '--i': 1 } as React.CSSProperties}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/equipe.png"
+                alt="Equipe Intech Jr."
+                className="team-photo"
+              />
+              <div className="team-photo__glow" aria-hidden="true" />
             </div>
           </div>
         </section>

@@ -366,6 +366,50 @@ button {
   pointer-events: none;
 }
 
+/* Navbar divider — separates nav links from OLIP */
+.navbar__divider {
+  width: 1px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 0 6px;
+}
+
+/* OLIP Link — standalone, emphasized green */
+.navbar__olip-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  overflow: hidden;
+  color: #6ee7a4;
+  transition: all var(--transition);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.navbar__olip-label {
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.navbar__olip-link:hover {
+  background: rgba(46, 204, 113, 0.1);
+  color: #2ecc71;
+  box-shadow: 0 0 12px rgba(46, 204, 113, 0.25);
+}
+
+.navbar__olip-link--active {
+  background: rgba(46, 204, 113, 0.12);
+  color: #2ecc71;
+  box-shadow: 0 0 12px rgba(46, 204, 113, 0.3);
+}
+
 /* Hamburger */
 .navbar__hamburger {
   display: none;
@@ -462,6 +506,23 @@ button {
 
 .navbar__sidebar-link:hover {
   color: var(--accent);
+}
+
+/* Divider in sidebar */
+.navbar__sidebar-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 16px 0;
+}
+
+/* OLIP link in sidebar — green accent */
+.navbar__sidebar-link--olip {
+  color: #6ee7a4;
+  border-bottom: 1px solid rgba(46, 204, 113, 0.15);
+}
+
+.navbar__sidebar-link--olip:hover {
+  color: #2ecc71;
 }
 
 .navbar__sidebar-footer {
@@ -751,15 +812,36 @@ button {
   flex-shrink: 0;
 }
 
+.sponsor-logo {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(100%) opacity(0.7) var(--extra-filter, );
+  transition: all 0.3s ease;
+}
+
+.sponsor-logo:hover {
+  filter: grayscale(0%) opacity(1) var(--extra-filter, );
+}
+
+.sponsor-logo--invert {
+  --extra-filter: invert(1) brightness(1.5);
+}
+
 /* =============================================
    10. Scroll Reveal Animations
    ============================================= */
 .reveal {
-  opacity: 0;
-  transform: translateY(24px);
   transition:
     opacity 0.6s ease calc(var(--i, 0) * 0.1s),
     transform 0.6s ease calc(var(--i, 0) * 0.1s);
+}
+
+/* Estado oculto aplicado apenas via JS — nunca via CSS puro */
+/* Isso garante que o Googlebot (sem JS) veja todo o conteúdo */
+.reveal.js-hidden {
+  opacity: 0;
+  transform: translateY(24px);
 }
 
 .reveal.visible {
@@ -1239,6 +1321,70 @@ button {
 }
 
 /* =============================================
+   13b. History Section (ACAM → InTech)
+   ============================================= */
+.history {
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.history::before {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, transparent 70%);
+  bottom: -100px;
+  left: -100px;
+  pointer-events: none;
+}
+
+.history__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(36px, 6vw, 72px);
+  align-items: center;
+}
+
+.history__text {
+  color: var(--text-secondary);
+  line-height: 1.82;
+  margin-bottom: 18px;
+  font-size: 0.94rem;
+}
+
+.history__image-wrap {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+}
+
+.history__image-wrap > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg), 0 0 0 1px var(--border-card);
+  aspect-ratio: 4 / 3;
+  transition: transform var(--transition-slow);
+}
+
+.history__image-wrap:hover > img {
+  transform: scale(1.02);
+}
+
+.history__image-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.07) 0%, rgba(139, 92, 246, 0.05) 100%);
+  mix-blend-mode: color;
+  pointer-events: none;
+}
+
+/* =============================================
    14. Process Section (Timeline)
    ============================================= */
 .process {
@@ -1538,7 +1684,60 @@ button {
 }
 
 /* =============================================
-   16. CTA Section
+   16. Team Section
+   ============================================= */
+.team-section {
+  background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+.team-section::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.team-photo-wrap {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: var(--radius-lg);
+  overflow: visible;
+}
+
+.team-photo {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg), 0 0 0 1px var(--border-card);
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-slow);
+}
+
+.team-photo-wrap:hover .team-photo {
+  transform: scale(1.015);
+}
+
+.team-photo__glow {
+  position: absolute;
+  inset: -1px;
+  border-radius: var(--radius-lg);
+  background: var(--gradient);
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(24px);
+}
+
+/* =============================================
+   17. CTA Section
    ============================================= */
 .cta-section {
   background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #1e3a8a 100%);
@@ -2008,6 +2207,12 @@ button {
     right: 12px;
   }
 
+  /* History */
+  .history__grid {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
   /* Process */
   .process__timeline {
     grid-template-columns: repeat(2, 1fr);
@@ -2045,9 +2250,9 @@ button {
 }
 
 /* =============================================
-   21. Responsive — Mobile (≤ 768px)
+   21. Responsive — Mobile (≤ 1024px)
    ============================================= */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   :root {
     --navbar-h: 64px;
   }
@@ -2058,6 +2263,14 @@ button {
 
   /* Navbar */
   .navbar__nav {
+    display: none;
+  }
+
+  .navbar__divider {
+    display: none;
+  }
+
+  .navbar__olip-link {
     display: none;
   }
 
@@ -2165,6 +2378,12 @@ button {
 
   .about__image-badge-num {
     font-size: 1.15rem;
+  }
+
+  /* History */
+  .history__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
 
   /* Process — 1 column on mobile */
@@ -2283,7 +2502,7 @@ button {
 /* =============================================
    23. Desktop only shows hamburger fix
    ============================================= */
-@media (min-width: 769px) {
+@media (min-width: 1025px) {
   .navbar__hamburger {
     display: none !important;
   }
