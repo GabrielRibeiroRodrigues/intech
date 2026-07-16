@@ -130,7 +130,7 @@ export default function Home() {
           muted
           loop
           playsInline
-          poster="/images/web.jpg"
+          preload="auto"
         >
           <source src="/videos/video.mp4" type="video/mp4" />
         </video>
