@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import type { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
 import ContactForm from '@/components/ContactForm'
@@ -236,7 +237,7 @@ export default function Home() {
               {/* Visual */}
               <div className="about__image-wrap reveal">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/design.webp" alt="Equipe Intech Jr. trabalhando" />
+                <Image src="/images/design.webp" alt="Equipe Intech Jr. trabalhando" width={1600} height={972}/>
                 <div className="about__image-badge" aria-hidden="true">
                   <span className="about__image-badge-num">2017</span>
                   <span className="about__image-badge-label">Fundação</span>
@@ -311,9 +312,11 @@ export default function Home() {
               {/* Image */}
               <div className="history__image-wrap reveal" style={{ '--i': 1 } as React.CSSProperties}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src="/images/acamin.jpeg"
                   alt="Equipe ACAM Jr. — origem da InTech Jr."
+                  width={1536}
+                  height={1024}
                 />
               </div>
             </div>
@@ -402,12 +405,16 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="team-photo-wrap reveal" style={{ '--i': 1 } as React.CSSProperties}>
+            <div className="team-photo-wrap reveal" style={{ '--i': 1 , position: 'relative', overflow: 'hidden'} as React.CSSProperties}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src="/images/equipe.webp"
                 alt="Equipe Intech Jr."
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority={true} // Adicione se esta imagem estiver no topo da página (Hero/About inicial)
                 className="team-photo"
+                style={{ objectFit: 'cover' }}
               />
               <div className="team-photo__glow" aria-hidden="true" />
             </div>
@@ -523,7 +530,7 @@ export default function Home() {
             <div className="footer__brand-col">
               <div className="footer__brand">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/Logo.png" alt="Logo Intech Jr." className="footer__logo" />
+                <Image src="/images/Logo.png" alt="Logo Intech Jr." className="footer__logo" width={1080} height={1080}/>
                 <span className="footer__name">Intech Jr.</span>
               </div>
               <p className="footer__tagline">

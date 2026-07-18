@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image';
 import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 
@@ -96,7 +97,7 @@ export default function Navbar() {
             {/* Brand */}
             <a href="/" className="navbar__brand" aria-label="Página inicial">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/Logo.png" alt="Logo Intech Jr." className="navbar__logo" />
+              <Image src="/images/Logo.png" alt="Logo Intech Jr." className="navbar__logo" width={1080} height={1080}/>
               <span className="navbar__name">Intech Jr.</span>
             </a>
 

@@ -1,5 +1,5 @@
 'use client'
-
+import Image from 'next/image';
 import { useState } from 'react'
 
 interface PortfolioItem {
@@ -31,7 +31,8 @@ export default function PortfolioCarousel({ items }: { items: PortfolioItem[] })
               className={`pf-carousel__slide${i === current ? ' active' : ''}`}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
+                fill
                 src={item.img}
                 alt={item.alt}
                 className="pf-carousel__img"

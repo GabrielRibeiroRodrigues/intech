@@ -1209,6 +1209,20 @@ button {
   transition: transform var(--transition-slow);
 }
 
+.about__image-wrap, .team-photo-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg), 0 0 0 1px var(--border-card);
+  overflow: hidden; /* Garante que a imagem respeite o border-radius */
+  transition: transform var(--transition-slow);
+}
+
+.about__image-wrap:hover, .team-photo-wrap:hover {
+  transform: scale(1.02);
+}
+
 .about__image-wrap:hover > img {
   transform: scale(1.02);
 }
